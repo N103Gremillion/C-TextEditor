@@ -1,4 +1,4 @@
-#include "GUI_Library/raylib/include/raylib.h"
+#include "raylib.h"
 
 #define RAYGUI_IMPLEMENTATION
 #include "GUI_Library/raygui/src/raygui.h"

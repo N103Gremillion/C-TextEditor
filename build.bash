@@ -1,1 +1,0 @@
-gcc -o main.exe main.c -I"C:\raylib\raylib\src" -lraylib -lgdi32 -lwinmm

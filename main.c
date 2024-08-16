@@ -1,18 +1,9 @@
-#include "include/raylib.h"
+#define SDL_MAIN_HANDLED
+#include <stdio.h>
+#include "./dependencies/include/SDL.h"
 
-int main(void)
-{
-    InitWindow(800, 450, "raylib [core] example - basic window");
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
-    }
-
-    CloseWindow();
-
+int main(int argc, char *argv[])
+{   
+    printf("YO YO YO");
     return 0;
 }

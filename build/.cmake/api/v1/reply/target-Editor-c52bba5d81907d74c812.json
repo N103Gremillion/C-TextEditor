@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Editor"
+			"path" : "/home/nathan/C-Projects/C-TextEditor/bin/Editor"
 		}
 	],
 	"backtrace" : 1,
@@ -11,7 +11,8 @@
 		"commands" : 
 		[
 			"add_executable",
-			"target_link_libraries"
+			"target_link_libraries",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -25,13 +26,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 18,
+				"line" : 20,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 19,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 17,
 				"parent" : 0
 			}
 		]
@@ -39,39 +46,18 @@
 	"compileGroups" : 
 	[
 		{
-			"compileCommandFragments" : 
-			[
-				{
-					"fragment" : "-std=gnu11"
-				}
-			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
-					"path" : "/home/nathan/C-Projects/C-TextEditor/build/_deps/fmt-src/include"
+					"backtrace" : 3,
+					"path" : "/usr/include/SDL2"
 				}
 			],
 			"language" : "C",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					1
-				],
-				"standard" : "11"
-			},
 			"sourceIndexes" : 
 			[
 				0
 			]
-		}
-	],
-	"dependencies" : 
-	[
-		{
-			"backtrace" : 2,
-			"id" : "fmt::@976f4f0bee90b99ecdb6"
 		}
 	],
 	"id" : "Editor::@6890427a1f51a3e7e1df",
@@ -85,11 +71,11 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "_deps/fmt-build/libfmt.a",
+				"fragment" : "-L/usr/lib/x86_64-linux-gnu  -lSDL2",
 				"role" : "libraries"
 			}
 		],
-		"language" : "CXX"
+		"language" : "C"
 	},
 	"name" : "Editor",
 	"nameOnDisk" : "Editor",

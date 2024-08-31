@@ -1,24 +1,5 @@
-# Ignore the SDL2 library directory
-dependencies/lib/
+# ignore bin folder
+bin/
 
-# Ignore the SDL2 include directory if you don't want to track it
-dependencies/include/
-
-# Ignore build output
-out/
-
-# Ignore object files and executables
-*.o
-*.exe
-
-# Ignore CMake generated files
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-
-# Ignore IDE specific files
-*.vscode/
-*.idea/
-
-!CMakeLists.txt
+# ignore build folder
+build/

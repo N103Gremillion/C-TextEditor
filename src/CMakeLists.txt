@@ -1,19 +1,23 @@
 cmake_minimum_required(VERSION 3.22.1)
+
+# Set the projcets name
 project(Editor VERSION 0.1.0 LANGUAGES C CXX)
 
-# standard can be 99 17 etc
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
+# Set the output directory for the executable
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
-#Bring in fmt lib
-include(FetchContent)
-FetchContent_Declare(
-    fmt
-    GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-    GIT_TAG 10.1.1
-)
+# Set the output directory for libraries (if any)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-FetchContent_MakeAvailable(fmt)
+# Find the SDL2 package
+find_package(SDL2 REQUIRED)
 
+# Include the SDL2 include directories
+include_directories(${SDL2_INCLUDE_DIRS})
+
+# Add executable
 add_executable(Editor main.c)
-target_link_libraries(Editor PRIVATE fmt::fmt)
+
+# Link the SDL2 library
+target_link_libraries(Editor ${SDL2_LIBRARIES})

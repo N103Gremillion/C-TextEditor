@@ -17,7 +17,10 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 # Add executable
-add_executable(Editor main.c)
+add_executable(Editor 
+    main.c
+    window.c
+)
 
 # Link the SDL2 library
 target_link_libraries(Editor ${SDL2_LIBRARIES})

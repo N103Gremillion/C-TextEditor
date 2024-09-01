@@ -19,7 +19,10 @@ include_directories(${SDL2_INCLUDE_DIRS})
 # Add executable
 add_executable(Editor 
     main.c
-    window.c
+    manager.c
+    graphics/window.c
+    graphics/renderer.c
+    events/event.c
 )
 
 # Link the SDL2 library

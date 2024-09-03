@@ -22,6 +22,8 @@ add_executable(Editor
     manager.c
     graphics/window.c
     graphics/renderer.c
+    graphics/button.c
+    graphics/color.c
     events/event.c
 )
 

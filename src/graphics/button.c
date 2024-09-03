@@ -1,6 +1,7 @@
 #include "button.h"
 
 // function prototypes
+// create and free
 Button createButton(int x, int y, int width, int height){  
 
     Button button;
@@ -17,6 +18,12 @@ Button createButton(int x, int y, int width, int height){
 
 }
 
+void freeButton(Button* button){
+    if (button != NULL){
+        free(button);
+        button = NULL;
+    }
+}
 
 // so called setters
 void changeButtonWidth(Button* button, int width){

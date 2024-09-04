@@ -2,7 +2,7 @@
 #define HASHMAP_H
 
 typedef struct {
-    
+    void** array;
 } hashMap;
 
 

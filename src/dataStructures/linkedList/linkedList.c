@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linkedList.h"
 
 
 // for LinkedList
-void initList(LinkedList* list){
+LinkedList* initList(){
+    LinkedList* list = malloc(sizeof(LinkedList));
     list->head = NULL;
     list->tail = NULL;
     list->size = 0;
+
+    return list;
 }
 
 void freeList(LinkedList* list){
@@ -23,11 +27,68 @@ void freeList(LinkedList* list){
     }
 }
 
-void addNode(LinkedList* list, LinkedNode* node);
-void removeNode(LinkedList* list, LinkedNode* node);
-int isEmpty(const LinkedList* list);
-void traverse(LinkedList* list, void (*func)(void*));
-LinkedNode* fetchNode(LinkedList* list, void* data);
+void addNode(LinkedList* list, LinkedNode* node){
+    if (list->head == NULL){
+        list->head = node;
+        list->tail = node;
+    }
+    else{
+        list->tail->next = node;
+        list->tail = node;
+    }
+    list->size++;
+    node->next = NULL;
+}
+
+void removeNode(LinkedList* list, LinkedNode* node){
+    if (list == NULL || node == NULL){
+        return;
+    }
+
+    // special casses
+    if (list->head == node){
+        if (list->tail == node){
+            list->tail = NULL; 
+        }
+        list->head = list->head->next;
+        free(node);
+    }
+    else{
+        LinkedNode* cur = list->head;
+        while (cur->next != NULL){
+            if (cur->next == node){
+                cur->next = cur->next->next;
+                if (node == list->tail){
+                    list->tail = cur;
+                }
+                free(node);
+                break;
+            }
+            cur = cur->next;
+        }
+                        
+    }
+
+    list->size--;
+}
+
+int isEmpty(const LinkedList* list){
+   return list->head == NULL ? 1 : 0; 
+}
+
+void traverse(LinkedList* list, void (*func)(void*)){
+    if (list == NULL || list->head == NULL){
+        return;
+    }
+
+    LinkedNode* cur = list->head;
+    
+    while (cur != NULL){
+        func(cur->key);
+        cur = cur->next;
+    }
+}
+
 
 //getters
 int getSize(const LinkedList* list){
@@ -45,7 +106,18 @@ LinkedNode* getTail(const LinkedList* list){
     return list->tail;
 }
 
+
 // for ListNode
+LinkedNode* initNode(char* key, void* data){
+
+    LinkedNode* node = malloc(sizeof(LinkedNode));
+    node->key = strdup(key);
+    node->data = data;
+    node->next = NULL;
+
+    return node;
+}
+
 void* getData(LinkedNode* node){
     if (node == NULL){
         return NULL;

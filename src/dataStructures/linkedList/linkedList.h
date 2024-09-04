@@ -2,6 +2,7 @@
 #define LINKEDLIST_H
 
 typedef struct LinkedNode{
+    char* key;
     void* data;
     struct LinkedNode* next;
 } LinkedNode;
@@ -14,7 +15,7 @@ typedef struct LinkedList{
 
 // prototypes
 // for LinkedList
-void initList(LinkedList* list);
+LinkedList* initList();
 void freeList(LinkedList* list);
 void addNode(LinkedList* list, LinkedNode* node);
 void removeNode(LinkedList* list, LinkedNode* node);
@@ -28,6 +29,7 @@ LinkedNode* getHead(const LinkedList* list);
 LinkedNode* getTail(const LinkedList* list);
 
 // for ListNode
+LinkedNode* initNode(char* key, void* data);
 void* getData(LinkedNode* node);
 LinkedNode* getNext(LinkedNode* node);
 void freeNode(LinkedNode* node);

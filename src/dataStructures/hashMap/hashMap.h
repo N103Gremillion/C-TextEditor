@@ -12,9 +12,9 @@ typedef struct {
 } HashMap;
 
 // prototypes
-HashMap* createHashMap(unsigned int size);
+HashMap* createHashMap();
 void destroyHashMap(HashMap* map);
-void resizeMap(HashMap* map);
+void resizeMap(HashMap** map);
 float calcLoad(HashMap* map);
 void put(HashMap* map, char* key, void* value); 
 void* get(HashMap* map, char* key);

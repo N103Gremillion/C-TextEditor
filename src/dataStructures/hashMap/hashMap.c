@@ -5,13 +5,13 @@
 
 
 // fucntions
-HashMap* createHashMap(unsigned int size){
+HashMap* createHashMap(){
 
     HashMap* map = malloc(sizeof(HashMap));
     map->size = 0;
-    map->capacity = 241;
+    map->capacity = 257;
     map->loadFactor = 0.0;
-    map->buckets = (LinkedList**) calloc(241, sizeof(LinkedList*));
+    map->buckets = (LinkedList**) calloc(map->capacity, sizeof(LinkedList*));
 
     return map;
 }
@@ -31,7 +31,33 @@ void freeHashMap(HashMap* map){
     free(map);
 }
 
-void resizeMap(HashMap* map){
+void resizeMap(HashMap** mapPtr){
+    
+    HashMap* map = *mapPtr;
+
+    // create new map with double capacity
+    HashMap* newMap = malloc(sizeof(HashMap));
+    newMap->loadFactor = 0.0;
+    newMap->size = 0;
+    newMap->capacity = map->capacity * 2;
+    newMap->buckets = (LinkedList**) calloc(newMap->capacity, sizeof(LinkedList*));
+       
+    // rehash old values and add to the new map
+    for (int i = 0; i < map->capacity; i++){
+        if (map->buckets[i] != NULL){
+            LinkedList* list = map->buckets[i];
+            LinkedNode* cur = list->head;
+            while (cur != NULL){
+                put(newMap, cur->key, cur->data);
+                cur = cur->next; 
+            }
+        }
+    }
+    
+    // free and refefference
+    freeHashMap(map);
+    *mapPtr = newMap;
+
 }
 
 float calcLoad(HashMap* map){
@@ -41,11 +67,42 @@ float calcLoad(HashMap* map){
 //void remove(HashMap* map, char* key);
 
 void put(HashMap* map, char* key, void* value){
+
+    if ((float)map->size / map->capacity > 0.75){
+        resizeMap(&map);
+    }
+
     int index = hash(key, map->capacity);
+    LinkedNode* node = initNode(key, value);
+
+    if (map->buckets[index] == NULL){
+        map->buckets[index] = initList();
+    }
+    addNode(map->buckets[index], node);
+    map->size++;
+    map->loadFactor = calcLoad(map);
 } 
 
 void* get(HashMap* map, char* key){
+    
+    int index = hash(key, map->capacity);
+    
+    if (map->buckets[index] == NULL){
+        return NULL;
+    }
+    
+    LinkedList* list = map->buckets[index];
+    LinkedNode* cur = list->head;
 
+    while (cur != NULL){
+        if (strcmp(cur->key, key) == 0){
+            printf("%s\n", cur->key);
+            return cur->data;
+        }
+        cur = cur->next;
+    }
+
+    return NULL;
 }
 
 

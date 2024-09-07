@@ -7,6 +7,11 @@
 // stuct wrapping SDL_Rect
 typedef struct{
     SDL_Rect rect;
+    SDL_Color color;
+    char* label;
+    SDL_Color labelColor;
+    bool isPressed;
+    bool isHovered;
 } Button;
 
 // function prototypes

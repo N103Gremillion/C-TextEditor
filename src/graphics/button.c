@@ -2,7 +2,6 @@
 #include "button.h"
 
 // function prototypes
-// create and free
 Button createButton(int x, int y, int width, int height){  
 
     Button button;

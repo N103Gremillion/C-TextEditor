@@ -9,9 +9,11 @@ void colorScreen(SDL_Renderer* renderer) {
     SDL_RenderClear(renderer); 
 }
 
-void renderButton(SDL_Renderer* renderer, Button button){
+void renderButton(SDL_Renderer* renderer, Button button, int redVal, int greenVal, int blueVal){
 		SDL_SetRenderDrawColor(renderer, button.color.r, button.color.g, button.color.b, button.color.a);
 		SDL_RenderFillRect(renderer, &button.rect);
+        SDL_SetRenderDrawColor(renderer, redVal, greenVal, blueVal, button.color.a);
+        SDL_RenderFillRect(renderer, &button.innerRect);
 }
 
 void presentScreen(SDL_Renderer* renderer) {

@@ -6,15 +6,23 @@ Button* createButton(int x, int y, int width, int height){
 
     Button* button = (Button*)malloc(sizeof(Button));
     SDL_Rect rect;
-    Color color = {0, 255, 0, 255};
+    SDL_Rect innerRect;
+
+    Color rectColor = {0, 255, 0, 255};
+    Color innerRectColor = {255, 255, 255, 255};
 
     rect.x = x;
+    innerRect.x = x + 2;
     rect.y = y;
+    innerRect.y = y + 2;
     rect.w = width;
+    innerRect.w = width - 4;
     rect.h = height;
+    innerRect.h = height - 4;
     button->isPressed = 0;
     button->isHovered = 0;        
     button->rect = rect;
+    button->innerRect = innerRect;
 
     return button;
 
@@ -22,6 +30,9 @@ Button* createButton(int x, int y, int width, int height){
 
 void freeButton(Button* button){
     if (button != NULL){
+        if (button->label != NULL){
+            free(button->label);
+        }
         free(button);
         button = NULL;
     }

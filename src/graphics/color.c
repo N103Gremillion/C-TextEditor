@@ -12,7 +12,8 @@ Color createColor(int red, int green, int blue, int alpha){
 
 }
 
-HashMap* createColorMap(){
+
+/* HashMap* createColorMap(){
 
     HashMap* map = createHashMap();
 
@@ -40,4 +41,4 @@ HashMap* createColorMap(){
 
     return map;
 
-}
+} */

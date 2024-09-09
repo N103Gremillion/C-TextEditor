@@ -2,16 +2,19 @@
 #include "button.h"
 
 // function prototypes
-Button createButton(int x, int y, int width, int height){  
+Button* createButton(int x, int y, int width, int height){  
 
-    Button button;
+    Button* button = (Button*)malloc(sizeof(Button));
     SDL_Rect rect;
+    Color color = {0, 255, 0, 255};
 
     rect.x = x;
     rect.y = y;
     rect.w = width;
     rect.h = height;
-    button.rect = rect;
+    button->isPressed = 0;
+    button->isHovered = 0;        
+    button->rect = rect;
 
     return button;
 

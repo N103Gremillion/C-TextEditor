@@ -25,6 +25,8 @@ add_executable(Editor
     graphics/button.c
     graphics/color.c
     events/event.c
+    dataStructures/hashMap/hashMap.c
+    dataStructures/linkedList/linkedList.c
 )
 
 # Link the SDL2 library

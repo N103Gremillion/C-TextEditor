@@ -3,21 +3,23 @@
 
 #include <SDL2/SDL.h>
 #include "color.h"
+#include "../dataStructures/hashMap/hashMap.h"
 
 // stuct wrapping SDL_Rect
 typedef struct{
     SDL_Rect rect;
+    
     SDL_Color color;
     char* label;
     SDL_Color labelColor;
-    bool isPressed;
-    bool isHovered;
+    int isPressed;
+    int isHovered;
 } Button;
 
 // function prototypes
-Button createButton(int x, int y, int width, int height);
+Button* createButton(int x, int y, int width, int height);
 void freeButton(Button* button);
-void render(SDL_Surface* Surface);
+void renderButton(SDL_Renderer* renderer, Button button);
 
 // so called setters
 void changeButtonWidth(Button* button,int width);

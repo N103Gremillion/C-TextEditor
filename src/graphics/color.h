@@ -11,6 +11,6 @@ typedef struct {
 } Color;
 
 Color createColor(int red, int green, int blue, int alpha);
-HashMap* createColorMap();
+//HashMap* createColorMap();
 
 #endif

@@ -2,7 +2,7 @@
 #define REDERER_H
 
 #include <SDL2/SDL.h>
-
+#include "button.h"
 SDL_Renderer* createRenderer(SDL_Window* window);
 
 void colorScreen(SDL_Renderer* renderer);

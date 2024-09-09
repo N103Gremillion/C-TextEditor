@@ -17,6 +17,7 @@ typedef struct{
 // function prototypes
 Button createButton(int x, int y, int width, int height);
 void freeButton(Button* button);
+void render(SDL_Surface* Surface);
 
 // so called setters
 void changeButtonWidth(Button* button,int width);

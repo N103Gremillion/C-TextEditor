@@ -11,7 +11,6 @@ Button createButton(int x, int y, int width, int height){
     rect.y = y;
     rect.w = width;
     rect.h = height;
-    
     button.rect = rect;
 
     return button;

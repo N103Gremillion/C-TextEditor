@@ -1,6 +1,7 @@
-#include <SDL2/SDL.h>
-#include "manager.h"
+//#include <SDL2/SDL.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "manager.h"
 
 int main(int argc, char *argv[])
 { 

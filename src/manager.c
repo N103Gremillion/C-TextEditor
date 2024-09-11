@@ -2,7 +2,10 @@
 
 int setupEditor(char* title, int width, int height){
 	
+	// initalize the video and font 
     SDL_Init(SDL_INIT_VIDEO);
+    TTF_Init();
+    
     SDL_Window* window = createWindow(title, width, height);
     SDL_Renderer* renderer = createRenderer(window);
 	

@@ -9,15 +9,15 @@
 typedef struct{
     SDL_Rect rect;
     SDL_Rect innerRect;
-    SDL_Color color;
+    Color color;
     char* label;
-    SDL_Color labelColor;
+    Color labelColor;
     int isPressed;
     int isHovered;
 } Button;
 
 // function prototypes
-Button* createButton(int x, int y, int width, int height);
+Button* createButton(int x, int y, int width, int height, int r, int g, int b);
 void freeButton(Button* button);
 
 // so called setters

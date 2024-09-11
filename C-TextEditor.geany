@@ -28,12 +28,18 @@ long_line_column=72
 
 [files]
 current_page=2
-FILE_NAME_0=334;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.h;0;4
-FILE_NAME_1=301;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.c;0;4
-FILE_NAME_2=459;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
-FILE_NAME_3=481;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
-FILE_NAME_4=591;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
-FILE_NAME_5=128;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.h;0;4
+FILE_NAME_0=253;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.h;0;4
+FILE_NAME_1=507;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.c;0;4
+FILE_NAME_2=330;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
+FILE_NAME_3=626;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
+FILE_NAME_4=684;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
+FILE_NAME_5=132;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.h;0;4
+FILE_NAME_6=204;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.h;0;4
+FILE_NAME_7=228;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.c;0;4
+FILE_NAME_8=166;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.h;0;4
+FILE_NAME_9=21;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmain.c;0;4
+FILE_NAME_10=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fcolor.h;0;4
+FILE_NAME_11=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fcolor.c;0;4
 
 [VTE]
 last_dir=/home/nathan/Desktop/C/C-TextEditor

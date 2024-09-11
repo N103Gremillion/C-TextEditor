@@ -6,6 +6,7 @@
 #include "graphics/renderer.h"
 #include "events/event.h"
 #include "graphics/button.h"
+#include "graphics/rectangle.h"
 
 int setupEditor(char* title, int windowWidth, int windowHeight);
 

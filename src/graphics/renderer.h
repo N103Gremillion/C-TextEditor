@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "button.h"
+#include "rectangle.h"
 
 SDL_Renderer* createRenderer(SDL_Window* window);
 
@@ -13,6 +14,8 @@ void presentScreen(SDL_Renderer* renderer);
 void destroyRenderer(SDL_Renderer* renderer);
 
 void renderButton(SDL_Renderer* renderer, Button button, int redValue, int greenValue, int blueValue);
+
+void renderRect(SDL_Renderer* renderer, Rect rectangle);
 
 #endif
 

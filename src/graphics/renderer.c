@@ -20,12 +20,14 @@ void renderButton(SDL_Renderer* renderer, Button* button, int redVal, int greenV
     SDL_RenderFillRect(renderer, &button->innerRect);
 
     // Render the text
-    renderText(renderer, button);
+    // renderText(renderer, button);
 }
 
+/*
 void renderText(SDL_Renderer* renderer, Button* button) {
     SDL_RenderCopy(renderer, button->texture, NULL, &button->innerRect);
 }
+*/
 
 void renderRect(SDL_Renderer* renderer, Rect rectangle){
 	SDL_SetRenderDrawColor(renderer, rectangle.color.red, rectangle.color.green, rectangle.color.blue, rectangle.color.alpha);

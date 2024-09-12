@@ -9,9 +9,7 @@
 // stuct wrapping SDL_Rect
 typedef struct{
     SDL_Rect rect;
-    SDL_Rect innerRect;
-    SDL_Texture* texture;
-    TTF_Font* font;    
+    SDL_Rect innerRect; 
     Color color;
     SDL_Color labelColor;
     char* label;
@@ -21,7 +19,7 @@ typedef struct{
 
 // function prototypes
 Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height, int r, int g, int b, int fontSize);
-void setTexture(SDL_Renderer* renderer, Button* button);
+/* void setTexture(SDL_Renderer* renderer, Button* button); */
 void freeButton(Button* button);
 
 // so called setters

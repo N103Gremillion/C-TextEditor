@@ -9,7 +9,6 @@ Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height
     SDL_Rect innerRect;
     SDL_Color textColor;
     SDL_Color labelColor = {0, 0, 0, 255};
-	TTF_Font* font = TTF_OpenFont("arial.ttf", fontSize);
     Color rectColor = createColor(r, g, b, 255);
 	
     rect.x = x;
@@ -26,19 +25,21 @@ Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height
     button->isHovered = 0;        
     button->rect = rect;
     button->innerRect = innerRect;
-    button->label = "Hello";
-    button->font = font;
-    setTexture(renderer, button);
+    // button->label = "Hello";
+    // button->font = font;
+    // setTexture(renderer, button);
 
     return button;
 
 }
 
+/*
 void setTexture(SDL_Renderer* renderer, Button* button){
 	SDL_Surface* surface = TTF_RenderText_Solid(button->font, button->label, button->labelColor);
 	button->texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 }
+*/
 
 void freeButton(Button* button){
     if (button != NULL){

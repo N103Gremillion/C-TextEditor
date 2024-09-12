@@ -9,11 +9,22 @@ void colorScreen(SDL_Renderer* renderer) {
     SDL_RenderClear(renderer); 
 }
 
-void renderButton(SDL_Renderer* renderer, Button button, int redVal, int greenVal, int blueVal){
-		SDL_SetRenderDrawColor(renderer, button.color.red, button.color.green, button.color.blue, button.color.alpha);
-		SDL_RenderFillRect(renderer, &button.rect);
-        SDL_SetRenderDrawColor(renderer, redVal, greenVal, blueVal, button.color.alpha);
-        SDL_RenderFillRect(renderer, &button.innerRect);
+void renderButton(SDL_Renderer* renderer, Button* button, int redVal, int greenVal, int blueVal) {
+	
+    // Render the outer button
+    SDL_SetRenderDrawColor(renderer, button->color.red, button->color.green, button->color.blue, button->color.alpha);
+    SDL_RenderFillRect(renderer, &button->rect);
+
+    // Render the inner button
+    SDL_SetRenderDrawColor(renderer, redVal, greenVal, blueVal, button->color.alpha);
+    SDL_RenderFillRect(renderer, &button->innerRect);
+
+    // Render the text
+    renderText(renderer, button);
+}
+
+void renderText(SDL_Renderer* renderer, Button* button) {
+    SDL_RenderCopy(renderer, button->texture, NULL, &button->innerRect);
 }
 
 void renderRect(SDL_Renderer* renderer, Rect rectangle){

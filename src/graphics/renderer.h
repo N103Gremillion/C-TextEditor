@@ -1,7 +1,8 @@
-#ifndef REDERER_H
-#define REDERER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "button.h"
 #include "rectangle.h"
 
@@ -13,7 +14,9 @@ void presentScreen(SDL_Renderer* renderer);
 
 void destroyRenderer(SDL_Renderer* renderer);
 
-void renderButton(SDL_Renderer* renderer, Button button, int redValue, int greenValue, int blueValue);
+void renderButton(SDL_Renderer* renderer, Button* button, int redValue, int greenValue, int blueValue);
+
+void renderText(SDL_Renderer* renderer, Button* button);
 
 void renderRect(SDL_Renderer* renderer, Rect rectangle);
 

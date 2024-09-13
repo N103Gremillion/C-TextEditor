@@ -12,14 +12,16 @@ typedef struct{
     SDL_Rect innerRect; 
     Color color;
     SDL_Color labelColor;
+    SDL_Texture* texture;
+    TTF_Font* font;
     char* label;
     int isPressed;
     int isHovered;
 } Button;
 
 // function prototypes
-Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height, int r, int g, int b, int fontSize);
-/* void setTexture(SDL_Renderer* renderer, Button* button); */
+Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height, int r, int g, int b, TTF_Font* font, char* label);
+void setTexture(SDL_Renderer* renderer, Button* button);
 void freeButton(Button* button);
 
 // so called setters

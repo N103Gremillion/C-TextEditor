@@ -2,7 +2,7 @@
 #include "button.h"
 
 // function prototypes
-Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height, int r, int g, int b, int fontSize){  
+Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height, int r, int g, int b, TTF_Font* font, char* label){  
 
     Button* button = (Button*)malloc(sizeof(Button));
     SDL_Rect rect;
@@ -25,21 +25,19 @@ Button* createButton(SDL_Renderer* renderer, int x, int y, int width, int height
     button->isHovered = 0;        
     button->rect = rect;
     button->innerRect = innerRect;
-    // button->label = "Hello";
-    // button->font = font;
-    // setTexture(renderer, button);
+    button->label = label;
+    button->font = font;
+    setTexture(renderer, button);
 
     return button;
 
 }
 
-/*
 void setTexture(SDL_Renderer* renderer, Button* button){
 	SDL_Surface* surface = TTF_RenderText_Solid(button->font, button->label, button->labelColor);
 	button->texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 }
-*/
 
 void freeButton(Button* button){
     if (button != NULL){

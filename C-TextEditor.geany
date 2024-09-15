@@ -27,12 +27,12 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=2
+current_page=4
 FILE_NAME_0=253;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.h;0;4
 FILE_NAME_1=507;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.c;0;4
-FILE_NAME_2=330;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
+FILE_NAME_2=791;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
 FILE_NAME_3=626;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
-FILE_NAME_4=684;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
+FILE_NAME_4=829;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
 FILE_NAME_5=132;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.h;0;4
 FILE_NAME_6=204;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.h;0;4
 FILE_NAME_7=228;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.c;0;4

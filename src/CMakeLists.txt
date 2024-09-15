@@ -10,7 +10,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Find the SDL2 and SDL2_ttf packages
 find_package(SDL2 REQUIRED)
-find_package(SDL2_ttf REQUIRED)
+
 
 # Add executable
 add_executable(Editor 
@@ -27,8 +27,10 @@ add_executable(Editor
 )
 
 # Include the SDL2 and SDL2_ttf include directories
-target_include_directories(Editor PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
+target_include_directories(Editor PRIVATE ${SDL2_INCLUDE_DIRS})
+link_directories(/usr/lib/x86_64-linux-gnu)
+include_directories(/usr/include/SDL2)
 
 # Link the SDL2 and SDL2_ttf libraries
-target_link_libraries(Editor PRIVATE SDL2::SDL2 SDL2_ttf::SDL2_ttf)
+target_link_libraries(Editor PRIVATE SDL2::SDL2 SDL2_ttf)
 

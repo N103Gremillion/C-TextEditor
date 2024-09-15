@@ -10,5 +10,7 @@
 #include "graphics/rectangle.h"
 
 int setupEditor(char* title, int windowWidth, int windowHeight);
-
+void initalizeLibraries();
+TTF_Font* loadFont();
+Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font);
 # endif

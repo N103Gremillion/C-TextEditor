@@ -27,8 +27,8 @@ void renderText(SDL_Renderer* renderer, Button* button) {
 	SDL_Rect textRect;
 	textRect.x = button->innerRect.x;
 	textRect.y = button->innerRect.y;
-	textRect.w = button->innerRect.w  - button->innerRect.w/3;
-	textRect.h = button->innerRect.h - button->innerRect.h/3;
+	textRect.w = button->innerRect.w;
+	textRect.h = button->innerRect.h;
     SDL_RenderCopy(renderer, button->texture, NULL, &textRect);
 }
 

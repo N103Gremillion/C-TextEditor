@@ -2,43 +2,20 @@
 
 int setupEditor(char* title, int width, int height){
 	
-	// initalize the video and font 
-    SDL_Init(SDL_INIT_VIDEO);
-    if (TTF_Init() == -1) {
-		printf("TTF_Init failed: %s\n", TTF_GetError());
-		return 1;
-	}
-    TTF_Font* font;
-    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/FreeSans.ttf", 18);
-    if (font == NULL) {
-		printf("Failed to load font: %s\n", TTF_GetError());
-		return 1;
-	}
+	//intialize libs
+	initalizeLibraries();
 	
+	// load font
+	TTF_Font* font = loadFont();
+	
+	// get window and renderer components
     SDL_Window* window = createWindow(title, width, height);   
     SDL_Renderer* renderer = createRenderer(window);
 	
-	// rectangle location of the text
-	SDL_Rect rectangle;
-	rectangle.x = 100;
-	rectangle.y = 150;
-	rectangle.w = 200;
-	rectangle.h = 50;
-	
-	// toolbar
+	// create toolbar and get buttons 
 	Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "toolbar");
-	
-    // creating buttons for the tool bar at the top of the editor
-	Button* fileButton = createButton(renderer, 0, 0, 41, 41, 0, 0, 0, font, "File");
-    Button* editButton = createButton(renderer, 40, 0, 41, 41, 0, 0, 0, font, "Edit");
-    Button* selectionButton = createButton(renderer, 80, 0, 41, 41, 0, 0, 0, font, "Selecet");
-    Button* viewButton = createButton(renderer, 120, 0, 41, 41, 0, 0, 0, font, "View");
-    Button* goButton = createButton(renderer, 160, 0, 41, 41, 0, 0, 0, font, "Go");
-    Button* runButton = createButton(renderer, 200, 0 , 41, 41, 0, 0, 0, font, "Run");
-    Button* TerminalButton = createButton(renderer, 240, 0 , 41, 41, 0, 0, 0, font, "Terminal");
-    Button* HelpButton = createButton(renderer, 280, 0 , 41, 41, 0, 0, 0, font, "Help");
-	Button* buttons[] = {fileButton, editButton, selectionButton, viewButton, goButton, runButton, TerminalButton, HelpButton};
-	
+	Button** toolbarButtons = getToolbarButtons(renderer, font);
+
     int isRunning = 1;
     int* running = &isRunning;
     SDL_Event event;
@@ -51,14 +28,15 @@ int setupEditor(char* title, int width, int height){
         // loop through buttons and render each
         renderRect(renderer, *toolbar);
         for (int i = 0; i < 8; i++){
-            renderButton(renderer, buttons[i], 128, 128, 128);
+            renderButton(renderer, toolbarButtons[i], 128, 128, 128);
         }
         
         presentScreen(renderer);
     }
-
+	
+	// free all components on the heap / clean up
     for (int i = 0; i < 8; i++){
-        freeButton(buttons[i]);
+        freeButton(toolbarButtons[i]);
     }
     destroyRenderer(renderer);
     destroyWindow(window);
@@ -68,4 +46,40 @@ int setupEditor(char* title, int width, int height){
 
     return 0;
     
+}
+
+void initalizeLibraries(){
+	// initalize the video and font 
+    if (SDL_Init(SDL_INIT_VIDEO)){
+		printf("SDL didn't initalize correctly %s\n", SDL_GetError());
+	}
+    if (TTF_Init() == -1) {
+		printf("TTF_Init failed: %s\n", TTF_GetError());
+	}
+}
+
+TTF_Font* loadFont(){
+	TTF_Font* font;
+    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/FreeSans.ttf", 18);
+    if (font == NULL) {
+		printf("Failed to load font: %s\n", TTF_GetError());
+		return NULL;
+	}
+	
+	return font;
+}
+
+Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
+	Button** buttons = malloc(8);
+	
+	buttons[0] = createButton(renderer, 0, 0, 41, 41, 0, 0, 0, font, "File");
+    buttons[1] = createButton(renderer, 40, 0, 50, 41, 0, 0, 0, font, "Edit");
+    buttons[2] = createButton(renderer, 90, 0, 70, 41, 0, 0, 0, font, "Select");
+    buttons[3] = createButton(renderer, 160, 0, 50, 41, 0, 0, 0, font, "View");
+    buttons[4] = createButton(renderer, 210, 0, 50, 41, 0, 0, 0, font, "Go");
+    buttons[5] = createButton(renderer, 260, 0, 50, 41, 0, 0, 0, font, "Run");
+    buttons[6] = createButton(renderer, 310, 0, 90, 41, 0, 0, 0, font, "Terminal");
+    buttons[7] = createButton(renderer, 400, 0, 50, 41, 0, 0, 0, font, "Help");
+
+	return buttons;
 }

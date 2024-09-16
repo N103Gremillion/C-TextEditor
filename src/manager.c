@@ -15,7 +15,10 @@ int setupEditor(char* title, int width, int height){
 	// create toolbar and get buttons 
 	Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "toolbar");
 	Button** toolbarButtons = getToolbarButtons(renderer, font);
-
+	
+	// create cursor
+	Cursor* cursor = initCursor();
+	
     int isRunning = 1;
     int* running = &isRunning;
     SDL_Event event;
@@ -27,10 +30,12 @@ int setupEditor(char* title, int width, int height){
         
         // loop through buttons and render each
         renderRect(renderer, *toolbar);
+        renderRect(renderer, *cursor->blinker);
+        
         for (int i = 0; i < 8; i++){
             renderButton(renderer, toolbarButtons[i], 128, 128, 128);
         }
-        
+		
         presentScreen(renderer);
     }
 	

@@ -5,7 +5,6 @@
 
 int main(int argc, char *argv[])
 { 
-	printf("yo what it do\n");
     setupEditor("Editor", 800, 600);   
 }
 

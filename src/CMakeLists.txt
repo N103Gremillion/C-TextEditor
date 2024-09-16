@@ -24,6 +24,7 @@ add_executable(Editor
     events/event.c
     dataStructures/hashMap/hashMap.c
     dataStructures/linkedList/linkedList.c
+    state/cursor.c
 )
 
 # Include the SDL2 and SDL2_ttf include directories

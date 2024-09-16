@@ -8,6 +8,7 @@
 #include "events/event.h"
 #include "graphics/button.h"
 #include "graphics/rectangle.h"
+#include "state/cursor.h"
 
 int setupEditor(char* title, int windowWidth, int windowHeight);
 void initalizeLibraries();

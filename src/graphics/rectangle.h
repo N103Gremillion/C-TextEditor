@@ -10,10 +10,10 @@
 typedef struct{
 	SDL_Rect rect;
 	Color color;
-	char* tag;
+	char* label;
 }Rect;
 	
-Rect* createRect(int x, int y, int width, int height, int r, int g, int b, char* tag);
+Rect* createRect(int x, int y, int width, int height, int r, int g, int b, char* label);
 void freeRect(Rect* rectangle);
 
 #endif

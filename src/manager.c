@@ -20,10 +20,8 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 
     // create toolbar and get buttons 
-    Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "toolbar");
+    Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "Toolbar");
     Button** toolbarButtons = getToolbarButtons(renderer, font);
-    
-    //printf("%s", toolbar->tag);
 
     // create cursor
     Cursor* cursor = initCursor();
@@ -38,8 +36,8 @@ int setupEditor(char* title, int width, int height){
       colorScreen(renderer);
       
       // loop through buttons and render each
-      renderRect(renderer, *toolbar);
-      //renderRect(renderer, *cursor->blinker);
+      renderRect(renderer, toolbar);
+      // renderCursor(renderer, cursor);
       
       for (int i = 0; i < 8; i++){
           renderButton(renderer, toolbarButtons[i], 128, 128, 128);
@@ -49,7 +47,7 @@ int setupEditor(char* title, int width, int height){
     }
 
 	// free all components on the heap / clean up
-  // freeRect(toolbar);
+	// freeRect(toolbar);
     for (int i = 0; i < 8; i++){
         freeButton(toolbarButtons[i]);
     }

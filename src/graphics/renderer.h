@@ -18,7 +18,7 @@ void renderButton(SDL_Renderer* renderer, Button* button, int redValue, int gree
 
 void renderText(SDL_Renderer* renderer, Button* button);
 
-void renderRect(SDL_Renderer* renderer, Rect rectangle);
+void renderRect(SDL_Renderer* renderer, Rect* rectangle);
 
 #endif
 

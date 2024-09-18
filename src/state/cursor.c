@@ -2,6 +2,7 @@
 
 Cursor* initCursor(){
 	Cursor* cursor = malloc(sizeof(Cursor));
+    
 	cursor->width = 5;
 	cursor->height = 5;
 	cursor->row = 1;

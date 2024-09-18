@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "color.h"
 
 typedef struct{

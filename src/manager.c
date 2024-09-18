@@ -2,44 +2,54 @@
 
 int setupEditor(char* title, int width, int height){
 	
-	//intialize libs
-	initalizeLibraries();
+    //intialize libs
+    initalizeLibraries();
+    
+    // load font
+    TTF_Font* font = loadFont();
+    
+    // get window and renderer components
+    SDL_Window* window = createWindow(title, width, height);
+     
+    if (!window) {
+		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+		SDL_Quit();
+		return 1;
+	}  
 	
-	// load font
-	TTF_Font* font = loadFont();
-	
-	// get window and renderer components
-    SDL_Window* window = createWindow(title, width, height);   
     SDL_Renderer* renderer = createRenderer(window);
-	
-	// create toolbar and get buttons 
-	Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "toolbar");
-	Button** toolbarButtons = getToolbarButtons(renderer, font);
-	
-	// create cursor
-	Cursor* cursor = initCursor();
-	
+
+    // create toolbar and get buttons 
+    Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "toolbar");
+    Button** toolbarButtons = getToolbarButtons(renderer, font);
+    
+    //printf("%s", toolbar->tag);
+
+    // create cursor
+    Cursor* cursor = initCursor();
+    
     int isRunning = 1;
     int* running = &isRunning;
     SDL_Event event;
 
     while (isRunning)
     {
-        handleEvents(&event, running);
-        colorScreen(renderer);
-        
-        // loop through buttons and render each
-        renderRect(renderer, *toolbar);
-        renderRect(renderer, *cursor->blinker);
-        
-        for (int i = 0; i < 8; i++){
-            renderButton(renderer, toolbarButtons[i], 128, 128, 128);
-        }
-		
-        presentScreen(renderer);
+      handleEvents(&event, running);
+      colorScreen(renderer);
+      
+      // loop through buttons and render each
+      renderRect(renderer, *toolbar);
+      //renderRect(renderer, *cursor->blinker);
+      
+      for (int i = 0; i < 8; i++){
+          renderButton(renderer, toolbarButtons[i], 128, 128, 128);
+      }
+
+      presentScreen(renderer);
     }
-	
+
 	// free all components on the heap / clean up
+  // freeRect(toolbar);
     for (int i = 0; i < 8; i++){
         freeButton(toolbarButtons[i]);
     }
@@ -88,3 +98,5 @@ Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
 
 	return buttons;
 }
+
+

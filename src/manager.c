@@ -24,7 +24,7 @@ int setupEditor(char* title, int width, int height){
     Button** toolbarButtons = getToolbarButtons(renderer, font);
 
     // create cursor
-    Cursor* cursor = initCursor();
+    Cursor* cursor = initCursor(50, 50, 5, 5, 1, 1, 255, 0, 0, "Cursor");
     
     int isRunning = 1;
     int* running = &isRunning;

@@ -1,15 +1,16 @@
 #include "cursor.h"
 
-Cursor* initCursor(){
-	Cursor* cursor = malloc(sizeof(Cursor));
-    
-	cursor->width = 5;
-	cursor->height = 5;
-	cursor->row = 1;
-	cursor->column = 1;
-	cursor->x = 50;
-	cursor->y = 50;
-	cursor->blinker = createRect(cursor->x, cursor->y, cursor->width, cursor->height, 255, 0, 0, "Cursor");
+Cursor* initCursor(int x, int y, int width, int height, int row, int column, int r, int g, int b, char* label){
+	Cursor* cursor = 
+	malloc(sizeof(Cursor));
+    SDL_Rect blinker;
+    blinker.x = x;
+    blinker.y = y;
+    blinker.w = width;
+    blinker.h = height;
+	cursor->row = row;
+	cursor->column = column;
+	cursor->blinker = blinker;
 }
 void shiftCursorRight(Cursor* cursor);
 void shiftCursorLeft(Cursor* cursor);

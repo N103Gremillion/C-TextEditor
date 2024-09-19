@@ -27,18 +27,18 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
+current_page=9
 FILE_NAME_0=120;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmain.c;0;4
-FILE_NAME_1=661;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
+FILE_NAME_1=723;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
 FILE_NAME_2=113;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.h;0;4
 FILE_NAME_3=131;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.h;0;4
 FILE_NAME_4=452;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.c;0;4
-FILE_NAME_5=166;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.h;0;4
-FILE_NAME_6=444;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.c;0;4
+FILE_NAME_5=332;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.h;0;4
+FILE_NAME_6=108;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.c;0;4
 FILE_NAME_7=791;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
-FILE_NAME_8=213;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.h;0;4
-FILE_NAME_9=461;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.c;0;4
+FILE_NAME_8=219;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.h;0;4
+FILE_NAME_9=359;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.c;0;4
 FILE_NAME_10=38;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
 
 [VTE]
-last_dir=/home/nathan/Desktop/C/C-TextEditor/bin
+last_dir=/home/nathan/Desktop/C/C-TextEditor

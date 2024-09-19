@@ -20,11 +20,11 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 
     // create toolbar and get buttons 
-    Rect* toolbar = createRect(0, 0, 800, 41, 128, 128, 128, "Toolbar");
+    Rect* toolbar = createRect(0, 0, 800, 50, 128, 128, 128, "Toolbar");
     Button** toolbarButtons = getToolbarButtons(renderer, font);
 
     // create cursor
-    Cursor* cursor = initCursor(50, 50, 5, 5, 1, 1, 255, 0, 0, "Cursor");
+    Cursor* cursor = initCursor(50, 70, 2, 20, 1, 1, 255, 0, 0, "Cursor");
     
     int isRunning = 1;
     int* running = &isRunning;
@@ -37,7 +37,7 @@ int setupEditor(char* title, int width, int height){
       
       // loop through buttons and render each
       renderRect(renderer, toolbar);
-      // renderCursor(renderer, cursor);
+      renderCursor(renderer, cursor);
       
       for (int i = 0; i < 8; i++){
           renderButton(renderer, toolbarButtons[i], 128, 128, 128);
@@ -47,7 +47,7 @@ int setupEditor(char* title, int width, int height){
     }
 
 	// free all components on the heap / clean up
-	// freeRect(toolbar);
+	freeRect(toolbar);
     for (int i = 0; i < 8; i++){
         freeButton(toolbarButtons[i]);
     }
@@ -85,14 +85,14 @@ TTF_Font* loadFont(){
 Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
 	Button** buttons = malloc(8);
 	
-	buttons[0] = createButton(renderer, 0, 0, 41, 41, 0, 0, 0, font, "File");
-    buttons[1] = createButton(renderer, 40, 0, 50, 41, 0, 0, 0, font, "Edit");
-    buttons[2] = createButton(renderer, 90, 0, 70, 41, 0, 0, 0, font, "Select");
-    buttons[3] = createButton(renderer, 160, 0, 50, 41, 0, 0, 0, font, "View");
-    buttons[4] = createButton(renderer, 210, 0, 50, 41, 0, 0, 0, font, "Go");
-    buttons[5] = createButton(renderer, 260, 0, 50, 41, 0, 0, 0, font, "Run");
-    buttons[6] = createButton(renderer, 310, 0, 90, 41, 0, 0, 0, font, "Terminal");
-    buttons[7] = createButton(renderer, 400, 0, 50, 41, 0, 0, 0, font, "Help");
+	buttons[0] = createButton(renderer, 0, 0, 41, 50, 0, 0, 0, font, "File");
+    buttons[1] = createButton(renderer, 40, 0, 50, 50, 0, 0, 0, font, "Edit");
+    buttons[2] = createButton(renderer, 90, 0, 70, 50, 0, 0, 0, font, "Select");
+    buttons[3] = createButton(renderer, 160, 0, 50, 50, 0, 0, 0, font, "View");
+    buttons[4] = createButton(renderer, 210, 0, 50, 50, 0, 0, 0, font, "Go");
+    buttons[5] = createButton(renderer, 260, 0, 50, 50, 0, 0, 0, font, "Run");
+    buttons[6] = createButton(renderer, 310, 0, 90, 50, 0, 0, 0, font, "Terminal");
+    buttons[7] = createButton(renderer, 400, 0, 50, 50, 0, 0, 0, font, "Help");
 
 	return buttons;
 }

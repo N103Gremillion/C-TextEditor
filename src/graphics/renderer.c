@@ -9,6 +9,14 @@ void colorScreen(SDL_Renderer* renderer) {
     SDL_RenderClear(renderer); 
 }
 
+void presentScreen(SDL_Renderer* renderer) {
+    SDL_RenderPresent(renderer);
+}
+
+void destroyRenderer(SDL_Renderer* renderer) {
+    SDL_DestroyRenderer(renderer);
+}
+
 void renderButton(SDL_Renderer* renderer, Button* button, int redVal, int greenVal, int blueVal) {
 	
     // Render the outer button
@@ -36,11 +44,10 @@ void renderRect(SDL_Renderer* renderer, Rect* rectangle){
 	SDL_SetRenderDrawColor(renderer, rectangle->color.red, rectangle->color.green, rectangle->color.blue, rectangle->color.alpha);
 	SDL_RenderFillRect(renderer, &(rectangle->rect));
 }
-void presentScreen(SDL_Renderer* renderer) {
-    SDL_RenderPresent(renderer);
+
+void renderCursor(SDL_Renderer* renderer, Cursor* cursor){
+	renderRect(renderer, &(cursor->blinker));
 }
 
-void destroyRenderer(SDL_Renderer* renderer) {
-    SDL_DestroyRenderer(renderer);
-}
+
     

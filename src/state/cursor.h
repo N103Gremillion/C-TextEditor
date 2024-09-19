@@ -2,6 +2,9 @@
 #define CURSOR_H
 
 #include <SDL2/SDL.h>
+#include "../graphics/rectangle.h"
+#include "../graphics/color.h"
+
 // struct to keep up with the location that I am at in the editor
 typedef struct {
 	// y axis
@@ -9,7 +12,7 @@ typedef struct {
 	// x axis
 	int column;
 	// visual of the cursor
-	SDL_Rect blinker;
+	Rect blinker;
 } Cursor;
 
 Cursor* initCursor(int x, int y, int width, int height, int row, int column, int r, int g, int b, char* label);

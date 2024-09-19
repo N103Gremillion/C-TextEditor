@@ -5,6 +5,7 @@
 #include <SDL2/SDL_ttf.h>
 #include "button.h"
 #include "rectangle.h"
+#include "../state/cursor.h"
 
 SDL_Renderer* createRenderer(SDL_Window* window);
 
@@ -19,6 +20,8 @@ void renderButton(SDL_Renderer* renderer, Button* button, int redValue, int gree
 void renderText(SDL_Renderer* renderer, Button* button);
 
 void renderRect(SDL_Renderer* renderer, Rect* rectangle);
+
+void renderCursor(SDL_Renderer* renderer, Cursor* cursor);
 
 #endif
 

@@ -73,7 +73,7 @@ void initalizeLibraries(){
 
 TTF_Font* loadFont(){
 	TTF_Font* font;
-    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/FreeSans.ttf", 18);
+    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/fonts/VollkornBold-ALwGg.ttf", 18);
     if (font == NULL) {
 		printf("Failed to load font: %s\n", TTF_GetError());
 		return NULL;

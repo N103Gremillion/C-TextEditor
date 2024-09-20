@@ -37,7 +37,7 @@ void addNode(LinkedList* list, void* data){
     }
     else{
         list->tail->next = node;
-        node->prev = tail;
+        node->prev = list->tail;
         list->tail = node;
         
     }
@@ -82,20 +82,6 @@ void removeNode(LinkedList* list, LinkedNode* node){
 int isEmpty(const LinkedList* list){
    return list->head == NULL ? 1 : 0; 
 }
-
-void traverse(LinkedList* list, void (*func)(void*)){
-    if (list == NULL || list->head == NULL){
-        return;
-    }
-
-    LinkedNode* cur = list->head;
-    
-    while (cur != NULL){
-        func(cur->key);
-        cur = cur->next;
-    }
-}
-
 
 //getters
 int getSize(const LinkedList* list){

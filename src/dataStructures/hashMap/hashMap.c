@@ -5,6 +5,8 @@
 
 
 // fucntions
+
+/*
 HashMap* createHashMap(){
 
     HashMap* map = malloc(sizeof(HashMap));
@@ -123,7 +125,7 @@ unsigned int hash(char* key, int capacity){
     return (sum % capacity);
         
 }
-
+*/
 
 
 

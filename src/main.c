@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 { 
-    setupEditor("Editor", 800, 600);   
+    setupEditor("Editor", 1000, 600);   
 }
 
     

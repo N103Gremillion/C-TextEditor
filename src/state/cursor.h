@@ -7,15 +7,18 @@
 
 // struct to keep up with the location that I am at in the editor
 typedef struct {
-	// y axis
+	
 	int row;
-	// x axis
 	int column;
+	int rowSize;
+	int columnSize;
+	int maxColumns;
+	
 	// visual of the cursor
 	Rect blinker;
 } Cursor;
 
-Cursor* initCursor(int x, int y, int width, int height, int row, int column, int r, int g, int b, char* label);
+Cursor* initCursor(int width, int height, int row, int column, int r, int g, int b, char* label);
 void shiftCursorRight(Cursor* cursor);
 void shiftCursorLeft(Cursor* cursor);
 void shiftCursorUp(Cursor* cursor);

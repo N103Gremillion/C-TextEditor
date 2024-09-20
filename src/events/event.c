@@ -1,6 +1,6 @@
 #include "event.h"
 
-void handleEvents(SDL_Event* event,int* running){
+void handleEvents(SDL_Event* event,int* running, Cursor* cursor){
 	
 	EditorState curState = EDIT_MODE;
 	
@@ -16,7 +16,7 @@ void handleEvents(SDL_Event* event,int* running){
 			switch(curState){
 				// edit mode calls the coresponding key event
 				case EDIT_MODE:
-					pullEditKeyboard(key);
+					pullEditKeyboard(key, cursor);
 				// command mode calls the coresponding key event
 				case COMMAND_MODE:
 					pullCommandKeyboard(key);
@@ -32,10 +32,30 @@ void handleEvents(SDL_Event* event,int* running){
 }
 
 // keyboard events for each of the states
-void pullEditKeyboard(SDL_Keycode key){
+void pullEditKeyboard(SDL_Keycode key, Cursor* cursor){
 	switch (key){
 		case SDLK_ESCAPE:
 			printf("Escape Pressed ");
+			break;
+		case SDLK_RIGHT:
+			// shift the current cursor over to the right
+			shiftCursorRight(cursor);
+			break;
+		case SDLK_LEFT:
+			// shift the current cursor over to the left
+			shiftCursorLeft(cursor);
+			break;
+		case SDLK_UP:
+			// shift up
+			shiftCursorUp(cursor);
+			break;
+		case SDLK_DOWN:
+			// shift down
+			shiftCursorDown(cursor);
+			break;
+		case SDLK_RETURN:
+			shiftCursorDown(cursor);
+			break;
 	}
 }
 

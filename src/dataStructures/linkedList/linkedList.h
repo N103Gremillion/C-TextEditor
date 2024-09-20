@@ -2,9 +2,9 @@
 #define LINKEDLIST_H
 
 typedef struct LinkedNode{
-    char* key;
-    void* data;
+	void* data;
     struct LinkedNode* next;
+    struct LinkedNode* prev;
 } LinkedNode;
 
 typedef struct LinkedList{
@@ -14,10 +14,11 @@ typedef struct LinkedList{
 } LinkedList;
 
 // prototypes
+
 // for LinkedList
 LinkedList* initList();
 void freeList(LinkedList* list);
-void addNode(LinkedList* list, LinkedNode* node);
+void addNode(LinkedList* list, void* data);
 void removeNode(LinkedList* list, LinkedNode* node);
 int isEmpty(const LinkedList* list);
 void traverse(LinkedList* list, void (*func)(void*));
@@ -32,6 +33,7 @@ LinkedNode* getTail(const LinkedList* list);
 LinkedNode* initNode(char* key, void* data);
 void* getData(LinkedNode* node);
 LinkedNode* getNext(LinkedNode* node);
+LinkedNode* getPrev(LinkedNode* node);
 void freeNode(LinkedNode* node);
 
 #endif

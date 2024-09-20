@@ -4,8 +4,9 @@
 #include "linkedList.h"
 
 
-// for LinkedList
+//************************* for LinkedList **************************
 LinkedList* initList(){
+	
     LinkedList* list = malloc(sizeof(LinkedList));
     list->head = NULL;
     list->tail = NULL;
@@ -27,17 +28,20 @@ void freeList(LinkedList* list){
     }
 }
 
-void addNode(LinkedList* list, LinkedNode* node){
+void addNode(LinkedList* list, void* data){
+	LinkedNode* node = initNode(data);
+	
     if (list->head == NULL){
         list->head = node;
         list->tail = node;
     }
     else{
         list->tail->next = node;
+        node->prev = tail;
         list->tail = node;
+        
     }
     list->size++;
-    node->next = NULL;
 }
 
 void removeNode(LinkedList* list, LinkedNode* node){
@@ -46,30 +50,33 @@ void removeNode(LinkedList* list, LinkedNode* node){
     }
 
     // special casses
-    if (list->head == node){
-        if (list->tail == node){
-            list->tail = NULL; 
-        }
-        list->head = list->head->next;
-        free(node);
+    if (list->head == node && list->tail == node){
+		list->head = NULL;
+		list->tail = NULL;
+	}
+    else if (list->head == node){
+		list->head = node->next;
+		if (list->head != NULL){
+			list->head->prev = NULL;
+		}
     }
+    else if (list->tail == node){
+		list->tail = node->prev;
+		if (list->tail != NULL){
+			list->tail->next = NULL;
+		}
+	}
     else{
-        LinkedNode* cur = list->head;
-        while (cur->next != NULL){
-            if (cur->next == node){
-                cur->next = cur->next->next;
-                if (node == list->tail){
-                    list->tail = cur;
-                }
-                free(node);
-                break;
-            }
-            cur = cur->next;
-        }
-                        
+        LinkedNode* prev = node->prev;
+        LinkedNode* next = node->next;
+        
+        prev->next = next;
+        if (next != NULL){ 
+			node->next = NULL;     
+		}                       
     }
-
     list->size--;
+    free(node);
 }
 
 int isEmpty(const LinkedList* list){
@@ -107,14 +114,14 @@ LinkedNode* getTail(const LinkedList* list){
 }
 
 
-// for ListNode
-LinkedNode* initNode(char* key, void* data){
+//************** for ListNode **********************
+LinkedNode* initNode(void* data){
 
     LinkedNode* node = malloc(sizeof(LinkedNode));
-    node->key = strdup(key);
     node->data = data;
     node->next = NULL;
-
+	node->prev = NULL;
+	
     return node;
 }
 
@@ -131,6 +138,13 @@ LinkedNode* getNext(LinkedNode* node){
         return NULL;
     }
     return node->next;
+}
+
+LinkedNode* getPrev(LinkedNode* node){
+	if (node == NULL){
+		return NULL;
+	}
+	return node->prev;
 }
 
 void freeNode(LinkedNode* node){

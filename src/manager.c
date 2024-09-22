@@ -10,7 +10,7 @@ int setupEditor(char* title, int width, int height){
     
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
-	LinkedList** positions;
+	FileContents* contents = initFileContents();
 	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -33,18 +33,18 @@ int setupEditor(char* title, int width, int height){
 
     while (isRunning)
     {
-      handleEvents(&event, running, cursor);
-      colorScreen(renderer);
-      
-      // loop through buttons and render each
-      renderRect(renderer, toolbar);
-      renderCursor(renderer, cursor);
-      
-      for (int i = 0; i < 8; i++){
-          renderButton(renderer, toolbarButtons[i], 128, 128, 128);
-      }
+		handleEvents(&event, running, cursor);
+		colorScreen(renderer);
 
-      presentScreen(renderer);
+		// loop through buttons and render each
+		renderRect(renderer, toolbar);
+		renderCursor(renderer, cursor);
+
+		for (int i = 0; i < 8; i++){
+		  renderButton(renderer, toolbarButtons[i], 128, 128, 128);
+		}
+
+		presentScreen(renderer);
     }
 
 	// free all components on the heap / clean up
@@ -84,7 +84,7 @@ TTF_Font* loadFont(){
 }
 
 Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
-	Button** buttons = malloc(8);
+	Button** buttons = malloc(8 * sizeof(Button*));
 	
 	buttons[0] = createButton(renderer, 0, 0, 41, 50, 0, 0, 0, font, "File");
     buttons[1] = createButton(renderer, 40, 0, 50, 50, 0, 0, 0, font, "Edit");

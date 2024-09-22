@@ -22,6 +22,7 @@ add_executable(Editor
     graphics/button.c
     graphics/rectangle.c
     graphics/color.c
+    graphics/fileContents.c
     events/event.c
     dataStructures/hashMap/hashMap.c
     dataStructures/linkedList/linkedList.c

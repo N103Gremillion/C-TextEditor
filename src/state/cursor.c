@@ -9,6 +9,7 @@ Cursor* initCursor(int width, int height, int row, int column, int r, int g, int
 	cursor->rowSize = 20;
 	cursor->columnSize = 10;
 	cursor->maxColumns = 90;
+	cursor->state = EDIT_MODE;
 	cursor->blinker = blinker;
 	
 	return cursor;

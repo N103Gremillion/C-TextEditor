@@ -18,10 +18,12 @@ FileContents* initFileContents(){
 }
 
 void initLine(FileContents* contents, int index){
-	if (index < 0 || index >= contents->capacity || contents == NULL || contents->lines == NULL){
+	if (contents == NULL || contents->lines == NULL){
 		return;
 	} 
-	
+	if (index < 0 || index >= contents->capacity){
+		return;
+	}
 	LinkedList* line = initList();
 	contents->lines[index] = line;
 	contents->numOfLines++;
@@ -32,12 +34,13 @@ void freeFileContents(FileContents* contents){
 		for (int i = 0; i < contents->numOfLines; i++){
 			freeList(contents->lines[i]);
 		}
+		free(contents->lines);
 		free(contents);
 	}	
 }
 
 void freeLine(FileContents* contents, int index){
-	if (index < 0 || index >= contents->capacity || contents == NULL || contents->lines == NULL){
+	if (index < 0 || index >= contents->capacity || contents == NULL || contents->lines == NULL || contents->lines[index] == NULL){
 		return;
 	}
 	freeList(contents->lines[index]);
@@ -45,11 +48,16 @@ void freeLine(FileContents* contents, int index){
 }
 
 void addToLine(FileContents* contents, int index, char character){
-	if (contents == NULL){
+	if (contents == NULL || index < 0 || index >= contents->numOfLines){
 		return;
 	}
 	
 	LinkedList* line = contents->lines[index];	
+	
+	if (line == NULL){
+		return;
+	}
+	
 	char* c = malloc(sizeof(char));
 	*c = character;
 	

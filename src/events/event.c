@@ -2,8 +2,6 @@
 
 void handleEvents(SDL_Event* event,int* running, Cursor* cursor){
 	
-	EditorState curState = EDIT_MODE;
-	
     while (SDL_PollEvent(event)){
 		// quit when the x is pressed
 		if (event->type == SDL_QUIT){
@@ -13,19 +11,23 @@ void handleEvents(SDL_Event* event,int* running, Cursor* cursor){
 		else if (event->type == SDL_KEYDOWN){
 			SDL_Keycode key = event->key.keysym.sym;
 			// poll the keys for each of the states
-			switch(curState){
+			switch(cursor->state){
 				// edit mode calls the coresponding key event
 				case EDIT_MODE:
 					pullEditKeyboard(key, cursor);
+					break;
 				// command mode calls the coresponding key event
 				case COMMAND_MODE:
 					pullCommandKeyboard(key);
+					break;
 				// insert mode calls the coresponding key event
 				case INSERT_MODE:
 					pullInsertKeyboard(key);
+					break;
 				// save mode calls the coresponding key event
 				case SAVE_MODE:
 					pullSaveKeyboard(key);
+					break;
 			}
 		}
     } 

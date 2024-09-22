@@ -10,7 +10,8 @@ int setupEditor(char* title, int width, int height){
     
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
-     
+	LinkedList** positions;
+	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		SDL_Quit();

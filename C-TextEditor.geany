@@ -27,9 +27,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=11
-FILE_NAME_0=120;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmain.c;0;4
-FILE_NAME_1=723;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
+current_page=13
+FILE_NAME_0=117;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmain.c;0;4
+FILE_NAME_1=311;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
 FILE_NAME_2=113;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.h;0;4
 FILE_NAME_3=131;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.h;0;4
 FILE_NAME_4=452;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frectangle.c;0;4
@@ -38,11 +38,12 @@ FILE_NAME_6=108;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2
 FILE_NAME_7=791;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
 FILE_NAME_8=219;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.h;0;4
 FILE_NAME_9=729;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.c;0;4
-FILE_NAME_10=38;CMake;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FCMakeLists.txt;0;4
-FILE_NAME_11=1692;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FlinkedList%2FlinkedList.c;0;4
-FILE_NAME_12=479;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FlinkedList%2FlinkedList.h;0;4
-FILE_NAME_13=2703;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FhashMap%2FhashMap.c;0;4
-FILE_NAME_14=556;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FhashMap%2FhashMap.h;0;4
+FILE_NAME_10=2180;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FlinkedList%2FlinkedList.c;0;4
+FILE_NAME_11=479;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FlinkedList%2FlinkedList.h;0;4
+FILE_NAME_12=524;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Ftest.c;0;4
+FILE_NAME_13=1955;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2FfileContents.c;0;4
+FILE_NAME_14=333;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2FfileContents.h;0;4
+FILE_NAME_15=124;Sh;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Ftest.sh;0;4
 
 [VTE]
-last_dir=/home/nathan/Desktop/C/C-TextEditor
+last_dir=/home/nathan/Desktop/C/C-TextEditor/src/graphics

@@ -26,7 +26,6 @@ add_executable(Editor
     events/event.c
     dataStructures/linkedList.c
     dataStructures/gapBuffer.c
-    dataStructures/test.c
     state/cursor.c
 )
 

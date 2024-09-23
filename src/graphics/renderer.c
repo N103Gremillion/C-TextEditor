@@ -31,7 +31,7 @@ void renderButton(SDL_Renderer* renderer, Button* button, int redVal, int greenV
     renderText(renderer, button);
 }
 
-void renderText(SDL_Renderer* renderer, Button* button) {
+void renderText(SDL_Renderer* renderer, SDL_Rect* rect) {
 	SDL_Rect textRect;
 	textRect.x = button->innerRect.x;
 	textRect.y = button->innerRect.y;

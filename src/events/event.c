@@ -1,6 +1,6 @@
 #include "event.h"
 
-void handleEvents(int* running, SDL_Event* event, Cursor* cursor, FileContents* contents){
+void handleEvents(int* running, SDL_Event* event, Cursor* cursor){
 	
     while (SDL_PollEvent(event)){
 		// quit when the x is pressed
@@ -14,19 +14,19 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, FileContents* 
 			switch(cursor->state){
 				// edit mode calls the coresponding key event
 				case EDIT_MODE:
-					pullEditKeyboard(running, key, cursor, contents);
+					pullEditKeyboard(running, key, cursor);
 					break;
 				// command mode calls the coresponding key event
 				case COMMAND_MODE:
-					pullCommandKeyboard(running, key, cursor, contents);
+					pullCommandKeyboard(running, key, cursor);
 					break;
 				// insert mode calls the coresponding key event
 				case INSERT_MODE:
-					pullInsertKeyboard(running, key, cursor, contents);
+					pullInsertKeyboard(running, key, cursor);
 					break;
 				// save mode calls the coresponding key event
 				case SAVE_MODE:
-					pullSaveKeyboard(running, key, cursor, contents);
+					pullSaveKeyboard(running, key, cursor);
 					break;
 			}
 		}
@@ -34,7 +34,7 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, FileContents* 
 }
 
 // keyboard events for each of the states
-void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents){
+void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	switch (key){
 		// escape button
 		case SDLK_ESCAPE:
@@ -79,14 +79,14 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContent
 	}
 }
 
-void pullCommandKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents){
+void pullCommandKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
 }
 
-void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents){
+void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
 }
 
-void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents){
+void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
 }

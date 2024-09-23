@@ -10,7 +10,9 @@ int setupEditor(char* title, int width, int height){
     
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
-	FileContents* contents = initFileContents();
+    
+    // storage component for input
+    GapBuffer* Line1 = initBuffer();
 	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -33,7 +35,7 @@ int setupEditor(char* title, int width, int height){
 
     while (isRunning)
     {
-		handleEvents(running, &event, cursor, contents);
+		handleEvents(running, &event, cursor);
 		colorScreen(renderer);
 
 		// loop through buttons and render each

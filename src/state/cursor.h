@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include "../graphics/rectangle.h"
 #include "../graphics/color.h"
-#include "../dataStructures/linkedList/linkedList.h"
 
 typedef enum {
     EDIT_MODE,

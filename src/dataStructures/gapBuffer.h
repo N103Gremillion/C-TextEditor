@@ -9,9 +9,8 @@ typedef struct{
 } GapBuffer;
 
 GapBuffer* initBuffer();
-void shiftGap(GapBuffer* gap, int cursorPosition)
+// void shiftGap(GapBuffer* gap, int cursorPosition)
 void insert(GapBuffer* buffer, char data);
-void remove(GapBuffer* buffer);
 void left(GapBuffer* buffer);
 void right(GapBuffer* buffer);
 void grow(GapBuffer* buffer);

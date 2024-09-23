@@ -65,13 +65,11 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContent
 			shiftCursorDown(cursor);
 			break;
 		case SDLK_SPACE:
-			addToLine(contents, cursor->row, ' ');
 			shiftCursorRight(cursor);
 			break;
 			
 		// normal alphabet
 		case SDLK_a:
-			addToLine(contents, cursor->row, 'a');
 			if (cursor->column >= cursor->maxColumns){
 				shiftCursorDown(cursor);
 				cursor->column = 1;

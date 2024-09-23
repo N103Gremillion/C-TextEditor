@@ -1,7 +1,6 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include "../dataStructures/hashMap/hashMap.h"
 
 typedef struct {
     int red;

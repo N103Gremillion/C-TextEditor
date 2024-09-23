@@ -11,7 +11,6 @@ int setupEditor(char* title, int width, int height){
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
 	FileContents* contents = initFileContents();
-	initLine(contents, 1);
 	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());

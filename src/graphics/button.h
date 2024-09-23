@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "color.h"
-#include "../dataStructures/hashMap/hashMap.h"
 
 // stuct wrapping SDL_Rect
 typedef struct{

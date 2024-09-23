@@ -24,8 +24,9 @@ add_executable(Editor
     graphics/color.c
     graphics/fileContents.c
     events/event.c
-    dataStructures/hashMap/hashMap.c
-    dataStructures/linkedList/linkedList.c
+    dataStructures/linkedList.c
+    dataStructures/gapBuffer.c
+    dataStructures/test.c
     state/cursor.c
 )
 

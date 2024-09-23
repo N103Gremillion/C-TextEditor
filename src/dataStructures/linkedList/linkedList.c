@@ -10,8 +10,9 @@ LinkedList* initList(){
     LinkedList* list = malloc(sizeof(LinkedList));
     list->head = NULL;
     list->tail = NULL;
+    list->cur = NULL;
     list->size = 0;
-
+	
     return list;
 }
 
@@ -28,20 +29,34 @@ void freeList(LinkedList* list){
     }
 }
 
-void addNode(LinkedList* list, void* data){
-	LinkedNode* node = initNode(data);
+void insertList(LinkedList* list, LinkedNode* prev, void* data, int position){
 	
-    if (list->head == NULL){
-        list->head = node;
-        list->tail = node;
-    }
-    else{
-        list->tail->next = node;
-        node->prev = list->tail;
-        list->tail = node;
-        
-    }
-    list->size++;
+	if (data == NULL){
+		return;
+	}
+	
+	LinkedNode* node = initNode(data);
+	node->position = position;
+	
+	if (list->head == NULL){
+		list->head = node;
+		list->tail = node;
+		return;
+	}
+	
+	
+	if (prev != NULL){
+		prev->next = node;
+		node->prev = prev;
+	}
+	else {
+		node->next = list->head;
+		list->head->prev = node;
+		list->head = node;
+	}
+	
+	list->cur = node;
+	list->size++;
 }
 
 void removeNode(LinkedList* list, LinkedNode* node){

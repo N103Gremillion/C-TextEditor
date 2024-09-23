@@ -47,7 +47,7 @@ void freeLine(FileContents* contents, int index){
 	contents->lines[index] = NULL;
 }
 
-void addToLine(FileContents* contents, int index, char character){
+void addToLine(FileContents* contents, int index, char character, int cursor){
 	if (contents == NULL || index < 0 || index >= contents->numOfLines){
 		return;
 	}
@@ -61,7 +61,7 @@ void addToLine(FileContents* contents, int index, char character){
 	char* c = malloc(sizeof(char));
 	*c = character;
 	
-	addNode(line, (void*) c);
+	insertList(line, line->cur, c, cursor->column);
 }
 
 void resize(FileContents* contents){

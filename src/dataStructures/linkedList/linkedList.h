@@ -5,11 +5,13 @@ typedef struct LinkedNode{
 	void* data;
     struct LinkedNode* next;
     struct LinkedNode* prev;
+    int position;
 } LinkedNode;
 
 typedef struct LinkedList{
     LinkedNode* head;
     LinkedNode* tail;
+    LinkedNode* cur;
     int size;
 } LinkedList;
 
@@ -18,7 +20,7 @@ typedef struct LinkedList{
 // for LinkedList
 LinkedList* initList();
 void freeList(LinkedList* list);
-void addNode(LinkedList* list, void* data);
+void insertList(LinkedList* list, LinkedNode* prev, void* data, int position);
 void removeNode(LinkedList* list, LinkedNode* node);
 int isEmpty(const LinkedList* list);
 

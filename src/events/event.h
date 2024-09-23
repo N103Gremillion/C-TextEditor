@@ -3,10 +3,11 @@
 
 #include <SDL2/SDL.h>
 #include "../state/cursor.h"
+#include "../graphics/fileContents.h"
 
-void handleEvents(SDL_Event* event, int* running, Cursor* cursor);
-void pullEditKeyboard(SDL_Keycode key, Cursor* cursor);
-void pullCommandKeyboard(SDL_Keycode key);
-void pullInsertKeyboard(SDL_Keycode key);
-void pullSaveKeyboard(SDL_Keycode key);
+void handleEvents(int* running, SDL_Event* event, Cursor* cursor, FileContents* contents);
+void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents);
+void pullCommandKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents);
+void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents);
+void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor, FileContents* contents);
 #endif

@@ -4,10 +4,10 @@
 
 GapBuffer* initBuffer(){
 	GapBuffer* gapBuffer = (GapBuffer*) malloc(sizeof(GapBuffer));
-	char* buffer = (char*) malloc(sizeof(char) * 30);
-	int front = 10; /* size of all components before the cursor */
-	int gap = 10; /* size of gap */ 
-	int length = 30;
+	char* buffer = (char*) malloc(sizeof(char) * 3);
+	int front = 1; /* size of all components before the cursor */
+	int gap = 1; /* size of gap */ 
+	int length = 3;
 	
 	return gapBuffer;
 }
@@ -27,8 +27,11 @@ void left(GapBuffer* buffer){
 	if (buffer == NULL || buffer->front == 0){
 		break;
 	}
-	// copy the chars of the 
-	buffer-
+	// copy the chars of the left side of buffer over to the right
+	char left = buffer->buffer[buffer->front];
+	buffer->front--;
+	buffer->buffer[buffer->font + buffer->gap] = left;
+	
 }
 void right(GapBuffer* buffer);
 void grow(GapBuffer* buffer);

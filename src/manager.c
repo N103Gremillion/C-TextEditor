@@ -12,7 +12,7 @@ int setupEditor(char* title, int width, int height){
     SDL_Window* window = createWindow(title, width, height);
     
     // storage component for input
-    // GapBuffer* Line1 = initBuffer();
+    GapBuffer* Line1 = initBuffer();
 	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());

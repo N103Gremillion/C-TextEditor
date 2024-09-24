@@ -3,7 +3,7 @@
 
 typedef struct{
 	char* buffer;
-	int front; /* size of all components before teh cursor */
+	int front; /* size of all components before the cursor */
 	int gap; /* size of gap */ 
 	int length;
 } GapBuffer;
@@ -14,5 +14,6 @@ void insert(GapBuffer* buffer, char data);
 void left(GapBuffer* buffer);
 void right(GapBuffer* buffer);
 void grow(GapBuffer* buffer);
+char* fetchText(GapBuffer* buffer);
 
 #endif

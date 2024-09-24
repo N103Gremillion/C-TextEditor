@@ -6,6 +6,8 @@
 #include "button.h"
 #include "rectangle.h"
 #include "../state/cursor.h"
+#include "../dataStructures/gapBuffer.h"
+#include "line.h"
 
 SDL_Renderer* createRenderer(SDL_Window* window);
 
@@ -17,7 +19,9 @@ void destroyRenderer(SDL_Renderer* renderer);
 
 void renderButton(SDL_Renderer* renderer, Button* button, int redValue, int greenValue, int blueValue);
 
-void renderText(SDL_Renderer* renderer, Button* button);
+void renderButtonText(SDL_Renderer* renderer, Button* button);
+
+void renderGapBuffer(SDL_Renderer* renderer, GapBuffer* gapBuffer, int row);
 
 void renderRect(SDL_Renderer* renderer, Rect* rectangle);
 

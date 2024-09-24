@@ -23,6 +23,7 @@ add_executable(Editor
     graphics/rectangle.c
     graphics/color.c
     graphics/fileContents.c
+    graphics/line.c
     events/event.c
     dataStructures/linkedList.c
     dataStructures/gapBuffer.c

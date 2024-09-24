@@ -20,16 +20,21 @@ typedef struct {
 	char* text;
 	TTF_Font* font;
 	SDL_Texture* texture;
+	SDL_Renderer* renderer;
 	int needsRedraw;
 	
 } Line;
 
 Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_Font* font);
-void loadTexture(SDL_Renderer* renderer, Line* line);
+void loadTexture(Line* line);
+// adjust all the necessary values by calling other functions (occurs when a change is made to the text)
+void adjustLine(Line* line);
+void updateLineRect(Line* line);
 // gives more memory to the text 
-void adjustText(char** textLocation);
+void increaseTextMemory(char** textLocation);
 void freeLine(Line* line);
 void freeText(char* text);
+
 
 
 #endif

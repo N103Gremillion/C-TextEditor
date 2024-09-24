@@ -11,6 +11,7 @@ typedef struct{
 GapBuffer* initBuffer();
 // void shiftGap(GapBuffer* gap, int cursorPosition)
 void insert(GapBuffer* buffer, char data);
+void deleteChar(GapBuffer* buffer);
 void left(GapBuffer* buffer);
 void right(GapBuffer* buffer);
 void grow(GapBuffer* buffer);

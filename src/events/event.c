@@ -1,6 +1,6 @@
 #include "event.h"
 
-void handleEvents(int* running, SDL_Event* event, Cursor* cursor){
+void handleEvents(int* running, SDL_Event* event, Cursor* cursor, Line* line){
 	
     while (SDL_PollEvent(event)){
 		// quit when the x is pressed
@@ -14,7 +14,7 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor){
 			switch(cursor->state){
 				// edit mode calls the coresponding key event
 				case EDIT_MODE:
-					pullEditKeyboard(running, key, cursor);
+					pullEditKeyboard(running, key, cursor, line);
 					break;
 				// command mode calls the coresponding key event
 				case COMMAND_MODE:
@@ -34,7 +34,7 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor){
 }
 
 // keyboard events for each of the states
-void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
+void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line){
 	switch (key){
 		// escape button
 		case SDLK_ESCAPE:
@@ -72,8 +72,12 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 		case SDLK_a:
 			if (cursor->column >= cursor->maxColumns){
 				shiftCursorDown(cursor);
-				cursor->column = 1;
-				
+				cursor->column = 1;	
+			}
+			else if(cursor->row == 1){			
+				insert(line->gapBuffer, 'a');
+				shiftCursorRight(cursor);
+				adjustLine(line);
 			}
 			break;
 	}

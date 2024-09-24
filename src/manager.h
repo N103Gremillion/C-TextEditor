@@ -9,6 +9,7 @@
 #include "graphics/button.h"
 #include "graphics/rectangle.h"
 #include "graphics/fileContents.h"
+#include "graphics/line.h"
 #include "dataStructures/gapBuffer.h"
 #include "state/cursor.h"
 

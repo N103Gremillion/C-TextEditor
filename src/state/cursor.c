@@ -41,3 +41,4 @@ void shiftCursorDown(Cursor* cursor){
 		cursor->blinker.rect.y += cursor->rowSize;
 	}
 }
+

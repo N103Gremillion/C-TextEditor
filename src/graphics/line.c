@@ -5,6 +5,8 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	
 	Line* line = (Line*) malloc(sizeof(Line));
 	
+	line->renderer = renderer;
+	
 	// deminsions of chars in text
 	int charWidth;
 	int charHeight;
@@ -32,7 +34,7 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	line->font = font;
 	
 	// texture
-	loadTexture(renderer, line);
+	loadTexture(line);
 	
 	// indicates when the loadTexture and update line functions need to be called (aka an input occurs on the line)
 	line->needsRedraw = 0;
@@ -40,7 +42,11 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	return line;
 }
 
-void loadTexture(SDL_Renderer* renderer, Line* line){
+void loadTexture(Line* line){
+	if (line->text == NULL || strlen(line->text) <= 0 || line->rect.w == 0){
+		return;
+	}
+	 
 	SDL_Surface* surface = TTF_RenderText_Solid(line->font, line->text, line->color);
 	
 	if (surface == NULL) {
@@ -48,7 +54,7 @@ void loadTexture(SDL_Renderer* renderer, Line* line){
         return; // Exit if surface creation failed
     }
     
-	line->texture = SDL_CreateTextureFromSurface(renderer, surface);
+	line->texture = SDL_CreateTextureFromSurface(line->renderer, surface);
 	
 	if (line->texture == NULL) {
         fprintf(stderr, "Failed to create texture: %s\n", SDL_GetError());
@@ -57,8 +63,29 @@ void loadTexture(SDL_Renderer* renderer, Line* line){
 	SDL_FreeSurface(surface);
 }
 
+// occures then a change is made to the gap buffer
+void adjustLine(Line* line){
+	if (line == NULL || line->text == NULL){
+		return;
+	}
+	freeText(line->text);
+	line->text = fetchText(line->gapBuffer);
+	updateLineRect(line);
+	loadTexture(line);
+}
+
+void updateLineRect(Line* line) {
+    if (line == NULL || line->text == NULL) {
+        printf("Line is not initialized correctly?\n");
+        return;
+    }
+
+    int width = strlen(line->text) * line->charWidth;
+    line->rect.w = width;
+}
+		
 // give the text more memory
-void adjustText(char** textLocation){
+void increaseTextMemory(char** textLocation){
 	if (textLocation == NULL){
 		return;
 	}

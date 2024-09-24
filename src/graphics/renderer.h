@@ -23,6 +23,8 @@ void renderButtonText(SDL_Renderer* renderer, Button* button);
 
 void renderGapBuffer(SDL_Renderer* renderer, GapBuffer* gapBuffer, int row);
 
+void renderLine(SDL_Renderer* renderer, Line* line);
+
 void renderRect(SDL_Renderer* renderer, Rect* rectangle);
 
 void renderCursor(SDL_Renderer* renderer, Cursor* cursor);

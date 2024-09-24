@@ -10,9 +10,6 @@ int setupEditor(char* title, int width, int height){
     
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
-    
-    // storage component for input
-    GapBuffer* Line1 = initBuffer();
 	
     if (!window) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -21,7 +18,10 @@ int setupEditor(char* title, int width, int height){
 	}  
 	
     SDL_Renderer* renderer = createRenderer(window);
-
+	
+	// storage component for input
+    Line* Line1 = initLine(renderer, 50, 60, initBuffer(), font);
+    
     // create toolbar and get buttons 
     Rect* toolbar = createRect(0, 0, 1000, 50, 128, 128, 128, "Toolbar");
     Button** toolbarButtons = getToolbarButtons(renderer, font);
@@ -35,11 +35,12 @@ int setupEditor(char* title, int width, int height){
 
     while (isRunning)
     {
-		handleEvents(running, &event, cursor);
+		handleEvents(running, &event, cursor, Line1);
 		colorScreen(renderer);
 
 		// loop through buttons and render each
 		renderRect(renderer, toolbar);
+		renderLine(renderer, Line1);
 		renderCursor(renderer, cursor);
 
 		for (int i = 0; i < 8; i++){

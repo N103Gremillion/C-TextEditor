@@ -7,7 +7,6 @@ GapBuffer* initBuffer(){
 	GapBuffer* gapBuffer = (GapBuffer*) malloc(sizeof(GapBuffer));
 	char* buffer = (char*) malloc(sizeof(char) * 10);
 	
-	memset(buffer, '\0', 10); /* initalize all to be */
 	gapBuffer->buffer = buffer;
 	gapBuffer->front = 0; /* size of all components before the cursor */
 	gapBuffer->gap = 10; /* size of gap */ 
@@ -26,11 +25,22 @@ void insert(GapBuffer* buffer, char data){
 	}
 	
 	buffer->buffer[buffer->front] = data;	
-	
 	buffer->front++;
 	buffer->gap--;
 }
 
+void deleteChar(GapBuffer* buffer){
+	int index = buffer->front;
+	
+	if (index <= 0){
+		return;
+	}
+	
+	// grow the size of the gap and remove the char at the previous position
+	// buffer->buffer[index - 1] = '\0';
+	buffer->gap++;
+	buffer->front--;
+}
 
 void left(GapBuffer* buffer){
 	if (buffer == NULL || buffer->front == 0 || buffer->length == 0){
@@ -38,11 +48,9 @@ void left(GapBuffer* buffer){
 	}
 	// copy the chars of the left side of gap over to the right
 	char leftChar = buffer->buffer[buffer->front - 1];
-	char gapValue = buffer->buffer[buffer->front];
 	
 	buffer->front--;
 	buffer->buffer[buffer->front + buffer->gap] = leftChar;
-	buffer->buffer[buffer->front] = gapValue;
 }
 void right(GapBuffer* buffer){
 	if (buffer == NULL || buffer->front + buffer->gap >= buffer->length || buffer->length == 0){
@@ -50,12 +58,9 @@ void right(GapBuffer* buffer){
 	}
 	
 	// copy the chars of the left side of buffer over to the right
-	char rightChar = buffer->buffer[buffer->front + buffer->gap];
-	char gapValue = buffer->buffer[buffer->front + buffer->gap - 1];
-	
+	char rightChar = buffer->buffer[buffer->front + buffer->gap];	
 	
 	buffer->buffer[buffer->front] = rightChar;
-	buffer->buffer[buffer->front + buffer->gap] = gapValue;
 	buffer->front++;
 }
 void grow(GapBuffer* buffer){
@@ -68,9 +73,6 @@ void grow(GapBuffer* buffer){
 	// shift over the elements to the right and add gap
 	memmove(newBuffer + gapPosition + gapSize, newBuffer + gapPosition, (buffer->length - gapPosition) * sizeof(char));
 	
-	// initalize the gap to contain \0 characters
-	memset(newBuffer + gapPosition, '\0', gapSize * sizeof(char));
-	
 	// reassing new values to the buffer
 	buffer->buffer = newBuffer;
 	buffer->length = newSize;
@@ -79,18 +81,19 @@ void grow(GapBuffer* buffer){
 
 char* fetchText(GapBuffer* buffer){
 	int totalValidChars = buffer->length - buffer->gap;
-	char* text = (char*) malloc((totalValidChars + 1));
-	int index = 0;
+	char* text = (char*) malloc((totalValidChars + 1) * sizeof(char));
 	int textIndex = 0;
 	
-	while (index < buffer->length){
-		char cur = buffer->buffer[index];
-		if (cur != '\0'){
-			text[textIndex] = cur;
-			textIndex++;
-		}
-		index++;
+	// copy everything before the gap
+	for (int i = 0; i < buffer->front; i++){
+		text[textIndex++] = buffer->buffer[i];
 	}
+	
+	// copy anything after gap
+	for (int i = buffer->front + buffer->gap; i < buffer->length; i++){
+		text[textIndex++] = buffer->buffer[i];
+	}
+	
 	text[textIndex] = '\0';
 	return text;
 }

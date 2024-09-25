@@ -43,11 +43,13 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		// right arrow
 		case SDLK_RIGHT:
 			// shift the current cursor over to the right
+			right(line->gapBuffer);
 			shiftCursorRight(cursor);
 			break;
 		// left arrow
 		case SDLK_LEFT:
 			// shift the current cursor over to the left
+			left(line->gapBuffer);
 			shiftCursorLeft(cursor);
 			break;
 		// up arrow
@@ -72,7 +74,6 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_a:
 			if (cursor->column >= cursor->maxColumns){
 				shiftCursorDown(cursor);
-				cursor->column = 1;	
 			}
 			else if(cursor->row == 1){			
 				insert(line->gapBuffer, 'a');

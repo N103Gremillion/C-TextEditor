@@ -5,12 +5,12 @@
 
 GapBuffer* initBuffer(){
 	GapBuffer* gapBuffer = (GapBuffer*) malloc(sizeof(GapBuffer));
-	char* buffer = (char*) malloc(sizeof(char) * 10);
+	char* buffer = (char*) malloc(sizeof(char) * 50);
 	
 	gapBuffer->buffer = buffer;
 	gapBuffer->front = 0; /* size of all components before the cursor */
 	gapBuffer->gap = 10; /* size of gap */ 
-	gapBuffer->length = 10;
+	gapBuffer->length = 50;
 	
 	return gapBuffer;
 }

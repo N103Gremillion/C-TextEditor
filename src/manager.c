@@ -5,9 +5,9 @@ int setupEditor(char* title, int width, int height){
     //intialize libs
     initalizeLibraries();
     
-    // load font
-    TTF_Font* font = loadFont();
-    
+    // load font for the buttons
+    TTF_Font* buttonFont = loadButtonFont();
+    // TTF_Font* textFont = loadTextFont();
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
 	
@@ -20,11 +20,11 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 	
 	// storage component for input
-    Line* Line1 = initLine(renderer, 60, 50, initBuffer(), font);
+    Line* Line1 = initLine(renderer, 60, 50, initBuffer(), buttonFont);
     
     // create toolbar and get buttons 
     Rect* toolbar = createRect(0, 0, 1000, 50, 128, 128, 128, "Toolbar");
-    Button** toolbarButtons = getToolbarButtons(renderer, font);
+    Button** toolbarButtons = getToolbarButtons(renderer, buttonFont);
 
     // create cursor
     Cursor* cursor = initCursor(2, 20, 1, 1, 255, 0, 0, "Cursor");
@@ -57,7 +57,7 @@ int setupEditor(char* title, int width, int height){
     }
     destroyRenderer(renderer);
     destroyWindow(window);
-    TTF_CloseFont(font); 
+    TTF_CloseFont(buttonFont); 
     TTF_Quit();
     SDL_Quit();
 
@@ -75,7 +75,18 @@ void initalizeLibraries(){
 	}
 }
 
-TTF_Font* loadFont(){
+TTF_Font* loadButtonFont(){
+	TTF_Font* font;
+    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/fonts/VollkornBold-ALwGg.ttf", 18);
+    if (font == NULL) {
+		printf("Failed to load font: %s\n", TTF_GetError());
+		return NULL;
+	}
+	
+	return font;
+}
+
+TTF_Font* loadTextFont(){
 	TTF_Font* font;
     font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/fonts/VollkornBold-ALwGg.ttf", 18);
     if (font == NULL) {

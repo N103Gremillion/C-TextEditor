@@ -16,6 +16,6 @@
 
 int setupEditor(char* title, int windowWidth, int windowHeight);
 void initalizeLibraries();
-TTF_Font* loadFont();
+TTF_Font* loadButtonFont();
 Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font);
 # endif

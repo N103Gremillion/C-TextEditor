@@ -70,7 +70,7 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 			shiftCursorRight(cursor);
 			break;
 			
-		// normal alphabet
+		// all alphabetical letters
 		case SDLK_a: case SDLK_b: case SDLK_c: case SDLK_d: case SDLK_e:
 		case SDLK_f: case SDLK_g: case SDLK_h: case SDLK_i: case SDLK_j:
 		case SDLK_k: case SDLK_l: case SDLK_m: case SDLK_n: case SDLK_o:

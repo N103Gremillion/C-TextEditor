@@ -20,7 +20,7 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 	
 	// storage component for input
-    Line* Line1 = initLine(renderer, 50, 60, initBuffer(), font);
+    Line* Line1 = initLine(renderer, 60, 50, initBuffer(), font);
     
     // create toolbar and get buttons 
     Rect* toolbar = createRect(0, 0, 1000, 50, 128, 128, 128, "Toolbar");

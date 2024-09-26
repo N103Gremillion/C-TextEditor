@@ -14,6 +14,7 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	charHeight = 20;
 	line->charWidth = charWidth;
 	line->charHeight = charHeight;
+	line->maxChars = 90;
 	
 	// rectangle around text
 	line->rect.x = x;

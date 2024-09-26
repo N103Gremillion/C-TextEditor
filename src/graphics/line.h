@@ -14,6 +14,7 @@ typedef struct {
 	
 	int charWidth;
 	int charHeight;
+	int maxChars;
 	SDL_Rect rect;
 	SDL_Color color;
 	GapBuffer* gapBuffer;
@@ -21,6 +22,8 @@ typedef struct {
 	TTF_Font* font;
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
+	
+	// not implemented yet
 	int needsRedraw;
 	
 } Line;

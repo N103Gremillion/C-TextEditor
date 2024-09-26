@@ -100,8 +100,5 @@ char* fetchText(GapBuffer* buffer){
 	
 	text[textIndex] = '\0';
 	
-	for (int i = 0; i < sizeof(text); i++){
-		printf("char : %c / index : %d\n", text[i], i);
-	}
 	return text;
 }

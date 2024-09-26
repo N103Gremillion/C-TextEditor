@@ -82,9 +82,8 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 				shiftCursorDown(cursor);
 			} else if (cursor->row == 1) {
 				// insert the appropriate char
-				insert(line->gapBuffer, key);
+				addToLine(line, key);
 				shiftCursorRight(cursor);
-				adjustLine(line);
 			}
 			break;
 			
@@ -102,4 +101,11 @@ void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 
 void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
+}
+
+void addToLine(Line* line, char key){
+	if (strlen(line->text) < line->maxChars){ 
+		insert(line->gapBuffer, key);
+		adjustLine(line);
+	}
 }

@@ -27,22 +27,23 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=9
+current_page=8
 FILE_NAME_0=1392;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Frenderer.c;0;4
-FILE_NAME_1=1015;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.c;0;4
+FILE_NAME_1=385;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.c;0;4
 FILE_NAME_2=341;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FgapBuffer.h;0;4
 FILE_NAME_3=287;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.h;0;4
 FILE_NAME_4=879;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.c;0;4
 FILE_NAME_5=278;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fbutton.h;0;4
 FILE_NAME_6=545;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmanager.c;0;4
-FILE_NAME_7=311;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.h;0;4
-FILE_NAME_8=1772;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.c;0;4
-FILE_NAME_9=382;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FgapBuffer.c;0;4
+FILE_NAME_7=556;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.h;0;4
+FILE_NAME_8=2298;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fevents%2Fevent.c;0;4
+FILE_NAME_9=2587;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2FdataStructures%2FgapBuffer.c;0;4
 FILE_NAME_10=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fmain.c;0;4
-FILE_NAME_11=539;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fline.h;0;4
-FILE_NAME_12=736;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fline.c;0;4
+FILE_NAME_11=401;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fline.h;0;4
+FILE_NAME_12=482;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2Fline.c;0;4
 FILE_NAME_13=46;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2FfileContents.h;0;4
 FILE_NAME_14=145;C;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fgraphics%2FfileContents.c;0;4
+FILE_NAME_15=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fnathan%2FDesktop%2FC%2FC-TextEditor%2Fsrc%2Fstate%2Fcursor.h;0;4
 
 [VTE]
 last_dir=/home/nathan/Desktop/C/C-TextEditor

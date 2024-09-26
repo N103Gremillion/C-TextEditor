@@ -5,14 +5,14 @@
 
 GapBuffer* initBuffer(){
 	GapBuffer* gapBuffer = (GapBuffer*) malloc(sizeof(GapBuffer));
-	char* buffer = (char*) malloc(sizeof(char) * 50);
-	
-	gapBuffer->buffer = buffer;
-	gapBuffer->front = 0; /* size of all components before the cursor */
-	gapBuffer->gap = 10; /* size of gap */ 
-	gapBuffer->length = 50;
-	
-	return gapBuffer;
+    char* buffer = (char*) calloc(50, sizeof(char));  // Use calloc to initialize to '\0' to pr
+    
+    gapBuffer->buffer = buffer;
+    gapBuffer->front = 0; 
+    gapBuffer->gap = 12;   // Set initial gap size
+    gapBuffer->length = 50;  
+    
+    return gapBuffer;
 }
 
 void insert(GapBuffer* buffer, char data){
@@ -20,7 +20,7 @@ void insert(GapBuffer* buffer, char data){
 		return;
 	}
 	
-	if (buffer->gap <= 0) {
+	if (buffer->gap <= 2) {
 		grow(buffer);
 	}
 	
@@ -73,10 +73,14 @@ void grow(GapBuffer* buffer){
 	// shift over the elements to the right and add gap
 	memmove(newBuffer + gapPosition + gapSize, newBuffer + gapPosition, (buffer->length - gapPosition) * sizeof(char));
 	
+	for (int i = gapPosition; i < gapPosition + gapSize; i++) {
+        newBuffer[i] = '\0';
+    }
+    
 	// reassing new values to the buffer
 	buffer->buffer = newBuffer;
 	buffer->length = newSize;
-	buffer->gap += 10;
+	buffer->gap += gapSize;
 }
 
 char* fetchText(GapBuffer* buffer){
@@ -95,5 +99,9 @@ char* fetchText(GapBuffer* buffer){
 	}
 	
 	text[textIndex] = '\0';
+	
+	for (int i = 0; i < sizeof(text); i++){
+		printf("char : %c / index : %d\n", text[i], i);
+	}
 	return text;
 }

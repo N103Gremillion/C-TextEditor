@@ -28,7 +28,7 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	line->gapBuffer = gapBuffer;
 	
 	// sting of text
-	line->text = fetchText(gapBuffer);
+	line->text = fetchText(line->gapBuffer);
 	
 	// font
 	line->font = font;

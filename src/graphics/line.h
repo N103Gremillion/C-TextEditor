@@ -23,9 +23,6 @@ typedef struct {
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 	
-	// not implemented yet
-	int needsRedraw;
-	
 } Line;
 
 Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_Font* font);

@@ -37,9 +37,6 @@ Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_F
 	// texture
 	loadTexture(line);
 	
-	// indicates when the loadTexture and update line functions need to be called (aka an input occurs on the line)
-	line->needsRedraw = 0;
-	
 	return line;
 }
 

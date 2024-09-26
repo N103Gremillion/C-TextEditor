@@ -71,16 +71,24 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 			break;
 			
 		// normal alphabet
-		case SDLK_a:
-			if (cursor->column >= cursor->maxColumns){
+		case SDLK_a: case SDLK_b: case SDLK_c: case SDLK_d: case SDLK_e:
+		case SDLK_f: case SDLK_g: case SDLK_h: case SDLK_i: case SDLK_j:
+		case SDLK_k: case SDLK_l: case SDLK_m: case SDLK_n: case SDLK_o:
+		case SDLK_p: case SDLK_q: case SDLK_r: case SDLK_s: case SDLK_t:
+		case SDLK_u: case SDLK_v: case SDLK_w: case SDLK_x: case SDLK_y: 
+		case SDLK_z: {
+			
+			if (cursor->column >= cursor->maxColumns) {
 				shiftCursorDown(cursor);
-			}
-			else if(cursor->row == 1){			
-				insert(line->gapBuffer, 'a');
+			} else if (cursor->row == 1) {
+				// insert the appropriate char
+				insert(line->gapBuffer, key);
 				shiftCursorRight(cursor);
 				adjustLine(line);
 			}
 			break;
+			
+		}
 	}
 }
 

@@ -102,10 +102,3 @@ void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
 }
-
-void addToLine(Line* line, char key){
-	if (strlen(line->text) < line->maxChars){ 
-		insert(line->gapBuffer, key);
-		adjustLine(line);
-	}
-}

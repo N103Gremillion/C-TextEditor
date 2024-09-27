@@ -41,10 +41,7 @@ void renderButtonText(SDL_Renderer* renderer, Button* button) {
 }
 
 void renderLine(SDL_Renderer* renderer, Line* line){
-	if (line->texture == NULL || line->rect.w == 0 || line->text == NULL){
-		return;
-	}
-	SDL_RenderCopy(renderer, line->texture, NULL, &(line->rect));
+	
 }
 
 void renderRect(SDL_Renderer* renderer, Rect* rectangle){

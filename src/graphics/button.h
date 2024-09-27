@@ -34,6 +34,6 @@ void getButtonWidth(const Button* button,int* width);
 void getButtongHeight(const Button* button, int* height);
 void getButtonX(const Button* button, int* x);
 void getButtonY(const Button* button, int* y);
-
+Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font);
 
 #endif

@@ -100,5 +100,18 @@ void getButtonY(const Button* button, int* y){
     }
 }
 
+Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
+	Button** buttons = malloc(8 * sizeof(Button*));
+	
+	buttons[0] = createButton(renderer, 0, 0, 41, 50, 0, 0, 0, font, "File");
+    buttons[1] = createButton(renderer, 40, 0, 50, 50, 0, 0, 0, font, "Edit");
+    buttons[2] = createButton(renderer, 90, 0, 70, 50, 0, 0, 0, font, "Select");
+    buttons[3] = createButton(renderer, 160, 0, 50, 50, 0, 0, 0, font, "View");
+    buttons[4] = createButton(renderer, 210, 0, 50, 50, 0, 0, 0, font, "Go");
+    buttons[5] = createButton(renderer, 260, 0, 50, 50, 0, 0, 0, font, "Run");
+    buttons[6] = createButton(renderer, 310, 0, 90, 50, 0, 0, 0, font, "Terminal");
+    buttons[7] = createButton(renderer, 400, 0, 50, 50, 0, 0, 0, font, "Help");
 
+	return buttons;
+}
 

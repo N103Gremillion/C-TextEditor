@@ -7,7 +7,8 @@ int setupEditor(char* title, int width, int height){
     
     // load font for the buttons
     TTF_Font* buttonFont = loadButtonFont();
-    // TTF_Font* textFont = loadTextFont();
+    TTF_Font* textFont = loadTextFont();
+    
     // get window and renderer components
     SDL_Window* window = createWindow(title, width, height);
 	
@@ -20,14 +21,14 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 	
 	// storage component for input
-    Line* Line1 = initLine(renderer, 60, 50, initBuffer(), buttonFont);
+    Line* line = initLine(renderer, 60, initBuffer(), textFont);
     
     // create toolbar and get buttons 
     Rect* toolbar = createRect(0, 0, 1000, 50, 128, 128, 128, "Toolbar");
     Button** toolbarButtons = getToolbarButtons(renderer, buttonFont);
 
     // create cursor
-    Cursor* cursor = initCursor(10, 20, 1, 1, 255, 0, 0, "Cursor");
+    Cursor* cursor = initCursor(10, 20, 1, 1, 0, 0, 128, "Cursor");
     
     int isRunning = 1;
     int* running = &isRunning;
@@ -35,12 +36,11 @@ int setupEditor(char* title, int width, int height){
 
     while (isRunning)
     {
-		handleEvents(running, &event, cursor, Line1);
+		handleEvents(running, &event, cursor, line);
 		colorScreen(renderer);
 
 		// loop through buttons and render each
 		renderRect(renderer, toolbar);
-		renderLine(renderer, Line1);
 		renderCursor(renderer, cursor);
 
 		for (int i = 0; i < 8; i++){
@@ -88,7 +88,7 @@ TTF_Font* loadButtonFont(){
 
 TTF_Font* loadTextFont(){
 	TTF_Font* font;
-    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/fonts/VollkornBold-ALwGg.ttf", 18);
+    font = TTF_OpenFont("/home/nathan/Desktop/C/C-TextEditor/src/fonts/VollkornBold-ALwGg.ttf", 12);
     if (font == NULL) {
 		printf("Failed to load font: %s\n", TTF_GetError());
 		return NULL;
@@ -97,19 +97,6 @@ TTF_Font* loadTextFont(){
 	return font;
 }
 
-Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font){
-	Button** buttons = malloc(8 * sizeof(Button*));
-	
-	buttons[0] = createButton(renderer, 0, 0, 41, 50, 0, 0, 0, font, "File");
-    buttons[1] = createButton(renderer, 40, 0, 50, 50, 0, 0, 0, font, "Edit");
-    buttons[2] = createButton(renderer, 90, 0, 70, 50, 0, 0, 0, font, "Select");
-    buttons[3] = createButton(renderer, 160, 0, 50, 50, 0, 0, 0, font, "View");
-    buttons[4] = createButton(renderer, 210, 0, 50, 50, 0, 0, 0, font, "Go");
-    buttons[5] = createButton(renderer, 260, 0, 50, 50, 0, 0, 0, font, "Run");
-    buttons[6] = createButton(renderer, 310, 0, 90, 50, 0, 0, 0, font, "Terminal");
-    buttons[7] = createButton(renderer, 400, 0, 50, 50, 0, 0, 0, font, "Help");
 
-	return buttons;
-}
 
 

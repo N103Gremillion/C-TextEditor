@@ -12,29 +12,20 @@
 
 typedef struct {
 	
-	int charWidth;
-	int charHeight;
+	int height;
 	int maxChars;
-	SDL_Rect rect;
-	SDL_Color color;
 	GapBuffer* gapBuffer;
 	char* text;
 	TTF_Font* font;
-	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 	
 } Line;
 
-Line* initLine(SDL_Renderer* renderer, int y, int x, GapBuffer* gapBuffer, TTF_Font* font);
-void loadTexture(Line* line);
-// adjust all the necessary values by calling other functions (occurs when a change is made to the text)
-void adjustLine(Line* line);
-void updateLineRect(Line* line);
+Line* initLine(SDL_Renderer* renderer, int y, GapBuffer* gapBuffer, TTF_Font* font);
+void addToLine(Line* line, char key);
 // gives more memory to the text 
 void increaseTextMemory(char** textLocation);
 void freeLine(Line* line);
 void freeText(char* text);
-
-
 
 #endif

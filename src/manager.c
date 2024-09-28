@@ -10,6 +10,7 @@ int setupEditor(char* title, int width, int height){
     TTF_Font* textFont = loadTextFont();
     
     // get window and renderer components
+    
     SDL_Window* window = createWindow(title, width, height);
 	
     if (!window) {

@@ -23,7 +23,10 @@ Line* initLine(SDL_Renderer* renderer, int y, GapBuffer* gapBuffer, TTF_Font* fo
 void addToLine(Line* line, char key){
 	if (strlen(line->text) < line->maxChars){ 
 		insert(line->gapBuffer, key);
+		line->text = fetchText(line->gapBuffer);
 	}
+	
+	printf("Current Text : %s\n", line->text);
 }
 
 // give the text more memory

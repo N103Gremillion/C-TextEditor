@@ -8,11 +8,17 @@
 #include <string.h>
 
 typedef struct{
-	char c;
+	char data;
+	int x;
+	int y;
 	int width;
+	int height;
+	SDL_Color color;
 	SDL_Rect rect;
+	SDL_Texture* texture;
 }Character;
 
+Character* initCharacter(char character);
 void loadTexture(Line* line);
 
 #endif

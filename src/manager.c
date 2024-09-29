@@ -22,7 +22,7 @@ int setupEditor(char* title, int width, int height){
     SDL_Renderer* renderer = createRenderer(window);
 	
 	// storage component for input
-    Line* line = initLine(renderer, 60, initBuffer(), textFont);
+    Line* line = initLine(renderer, 50, 100, initBuffer(), textFont);
     
     // create toolbar and get buttons 
     Rect* toolbar = createRect(0, 0, 1000, 50, 128, 128, 128, "Toolbar");
@@ -43,7 +43,7 @@ int setupEditor(char* title, int width, int height){
 		// loop through buttons and render each
 		renderRect(renderer, toolbar);
 		renderCursor(renderer, cursor);
-
+		
 		for (int i = 0; i < 8; i++){
 		  renderButton(renderer, toolbarButtons[i], 128, 128, 128);
 		}

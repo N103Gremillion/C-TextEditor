@@ -22,6 +22,7 @@ typedef struct{
 Character initCharacter(SDL_Renderer* renderer, TTF_Font* font, char data, int x, int y, int height);
 Character* initCharacters(int numOfChars);
 void increaseCharactersLength(Character** characters, int newSize);
-void setCharTexture(SDL_Renderer* renderer, Character character);
+void setCharTexture(SDL_Renderer* renderer, Character* character);
+void renderCharacter(SDL_Renderer* renderer, Character character);
 
 #endif

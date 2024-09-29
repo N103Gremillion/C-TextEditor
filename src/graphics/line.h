@@ -17,6 +17,7 @@ typedef struct {
 	int maxChars;
 	int numOfChars;
 	int y;
+	int x;
 	GapBuffer* gapBuffer;
 	int charactersLength;
 	Character* characters; // keep track of all the characters 
@@ -26,7 +27,7 @@ typedef struct {
 	
 } Line;
 
-Line* initLine(SDL_Renderer* renderer, int y, GapBuffer* gapBuffer, TTF_Font* font);
+Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_Font* font);
 void addToLine(Line* line, char key);
 void addCharacter(Line* line, char key);
 // gives more memory to the text 

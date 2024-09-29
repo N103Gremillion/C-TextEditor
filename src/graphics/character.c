@@ -27,7 +27,7 @@ Character initCharacter(SDL_Renderer* renderer, TTF_Font* font, char data, int x
 	rect.w = width;
 	rect.h = charHeight;
 	character.rect = rect;
-	setCharTexture(renderer, character);
+	setCharTexture(renderer, &character);
 	
 	return character;
 }
@@ -44,10 +44,14 @@ void increaseCharactersLength(Character** characters, int newSize){
 	
 	*characters = newCharacters;
 }
-void setCharTexture(SDL_Renderer* renderer, Character character){
-	char text[2] = {character.data, '\0'};
+void setCharTexture(SDL_Renderer* renderer, Character* character){
+	char text[2] = {character->data, '\0'};
 	
-	SDL_Surface* surface = TTF_RenderText_Solid(character.font, text, character.color);
-	character.texture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_Surface* surface = TTF_RenderText_Solid(character->font, text, character->color);
+	character->texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
+}
+
+void renderCharacter(SDL_Renderer* renderer, Character character) {
+    SDL_RenderCopy(renderer, character.texture, NULL, &(character.rect));
 }

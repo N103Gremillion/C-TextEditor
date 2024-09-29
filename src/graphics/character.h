@@ -16,9 +16,12 @@ typedef struct{
 	SDL_Color color;
 	SDL_Rect rect;
 	SDL_Texture* texture;
+	TTF_Font* font;
 }Character;
 
-Character* initCharacter(char character);
-void loadTexture(Line* line);
+Character initCharacter(SDL_Renderer* renderer, TTF_Font* font, char data, int x, int y, int height);
+Character* initCharacters(int numOfChars);
+void increaseCharactersLength(Character** characters, int newSize);
+void setCharTexture(SDL_Renderer* renderer, Character character);
 
 #endif

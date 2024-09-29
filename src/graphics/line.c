@@ -10,9 +10,16 @@ Line* initLine(SDL_Renderer* renderer, int y, GapBuffer* gapBuffer, TTF_Font* fo
 	// deminsions of chars in text
 	line->height = 20;
 	line->maxChars = 90;
+	line->numOfChars = 0;
+	line->y = y;
 	
 	// gap buffer
 	line->gapBuffer = gapBuffer;
+	
+	line->charactersLength = 50;
+	line->characters = initCharacters(50);
+	
+	line->font = font;
 	
 	// sting of text
 	line->text = fetchText(line->gapBuffer);
@@ -22,13 +29,29 @@ Line* initLine(SDL_Renderer* renderer, int y, GapBuffer* gapBuffer, TTF_Font* fo
 
 void addToLine(Line* line, char key){
 	if (strlen(line->text) < line->maxChars){ 
+		addCharacter(line, key);
 		insert(line->gapBuffer, key);
 		line->text = fetchText(line->gapBuffer);
 	}
-	
-	printf("Current Text : %s\n", line->text);
 }
 
+void addCharacter(Line* line, char key){
+	printf("The current index is : %d \n", line->gapBuffer->front);
+	/*
+	int index = line->gapBuffer->front;
+	
+	// if the gap is at the start of the line
+	if (index == 0){
+		
+	}
+	else{
+		
+	}
+	int index = line->gapBuffer->front
+	Character character = initCharacter(line->renderer, line->font, key, , line->y, line->height);
+	line->numOfChars++
+	*/
+}
 // give the text more memory
 void increaseTextMemory(char** textLocation){
 	if (textLocation == NULL){

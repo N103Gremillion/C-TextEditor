@@ -33,5 +33,6 @@ void addCharacter(Line* line, char key);
 void increaseTextMemory(char** textLocation);
 void freeLine(Line* line);
 void freeText(char* text);
+void renderLine(SDL_Renderer* renderer, Line* line);
 
 #endif

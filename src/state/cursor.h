@@ -33,6 +33,6 @@ void shiftCursorRight(Cursor* cursor);
 void shiftCursorLeft(Cursor* cursor);
 void shiftCursorUp(Cursor* cursor);
 void shiftCursorDown(Cursor* cursor);
+void renderCursor(SDL_Renderer* renderer, Cursor* cursor);
 
-	
 #endif

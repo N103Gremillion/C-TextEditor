@@ -15,5 +15,6 @@ typedef struct{
 	
 Rect* createRect(int x, int y, int width, int height, int r, int g, int b, char* label);
 void freeRect(Rect* rectangle);
+void renderRect(SDL_Renderer* renderer, Rect* rectangle);
 
 #endif

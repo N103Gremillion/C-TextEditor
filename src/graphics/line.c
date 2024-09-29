@@ -85,3 +85,7 @@ void freeText(char* text){
 	}
 	free(text);
 }
+
+void renderLine(SDL_Renderer* renderer, Line* line){
+	
+}

@@ -41,4 +41,7 @@ void shiftCursorDown(Cursor* cursor){
 		cursor->blinker.rect.y += cursor->rowSize;
 	}
 }
+void renderCursor(SDL_Renderer* renderer, Cursor* cursor){
+	renderRect(renderer, &(cursor->blinker));
+}
 

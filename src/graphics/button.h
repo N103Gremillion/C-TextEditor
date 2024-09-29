@@ -35,5 +35,7 @@ void getButtongHeight(const Button* button, int* height);
 void getButtonX(const Button* button, int* x);
 void getButtonY(const Button* button, int* y);
 Button** getToolbarButtons(SDL_Renderer* renderer ,TTF_Font* font);
+void renderButton(SDL_Renderer* renderer, Button* button, int redVal, int greenVal, int blueVal);
+void renderButtonText(SDL_Renderer* renderer, Button* button);
 
 #endif

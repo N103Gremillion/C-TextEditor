@@ -29,3 +29,8 @@ void freeRect(Rect* rectangle){
   free(rectangle);
 }
 
+void renderRect(SDL_Renderer* renderer, Rect* rectangle){
+	SDL_SetRenderDrawColor(renderer, rectangle->color.red, rectangle->color.green, rectangle->color.blue, rectangle->color.alpha);
+	SDL_RenderFillRect(renderer, &(rectangle->rect));
+}
+

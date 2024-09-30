@@ -70,7 +70,8 @@ void addCharacter(Line* line, char key){
 		charX = previousCharacter.x + previousCharacter.width;
 	}
 	
-	Character character = initCharacter(line->renderer, line->font, key, charX, line->y, line->height);
+	int y = line->y;
+	Character character = initCharacter(line->renderer, line->font, key, charX, y, line->height);
 	
 	// insert at the current gap position
 	line->characters[index] = character;
@@ -112,5 +113,7 @@ void freeText(char* text){
 }
 
 void renderLine(SDL_Renderer* renderer, Line* line){
-	
+	for (int i = 0; i < line->numOfChars; i++){
+		renderCharacter(renderer, line->characters[i]);	
+	}
 }

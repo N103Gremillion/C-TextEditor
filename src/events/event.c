@@ -44,13 +44,13 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_RIGHT:
 			// shift the current cursor over to the right
 			right(line->gapBuffer);
-			shiftCursorRight(cursor);
+			// shiftCursorRight(cursor);
 			break;
 		// left arrow
 		case SDLK_LEFT:
 			// shift the current cursor over to the left
 			left(line->gapBuffer);
-			shiftCursorLeft(cursor);
+			// shiftCursorLeft(cursor);
 			break;
 		// up arrow
 		case SDLK_UP:
@@ -64,10 +64,10 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 			break;
 		// enter
 		case SDLK_RETURN:
-			shiftCursorDown(cursor);
+			// shiftCursorDown(cursor);
 			break;
 		case SDLK_SPACE:
-			shiftCursorRight(cursor);
+			// shiftCursorRight(cursor);
 			break;
 			
 		// all alphabetical letters
@@ -82,8 +82,8 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 				shiftCursorDown(cursor);
 			} else if (cursor->row == 1) {
 				// insert the appropriate char
-				addToLine(line, key);
-				shiftCursorRight(cursor);
+				int shiftValue = addToLine(line, key);
+				shiftCursorRight(cursor, shiftValue);
 			}
 			break;
 			

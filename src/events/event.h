@@ -11,5 +11,4 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 void pullCommandKeyboard(int* running, SDL_Keycode key, Cursor* cursor);
 void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor);
 void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor);
-void addToLine(Line* line, char key);
 #endif

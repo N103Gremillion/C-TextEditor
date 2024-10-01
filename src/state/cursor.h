@@ -29,8 +29,8 @@ typedef struct {
 } Cursor;
 
 Cursor* initCursor(int width, int height, int row, int column, int r, int g, int b, char* label);
-void shiftCursorRight(Cursor* cursor);
-void shiftCursorLeft(Cursor* cursor);
+void shiftCursorRight(Cursor* cursor, int value);
+void shiftCursorLeft(Cursor* cursor, int value);
 void shiftCursorUp(Cursor* cursor);
 void shiftCursorDown(Cursor* cursor);
 void renderCursor(SDL_Renderer* renderer, Cursor* cursor);

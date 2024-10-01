@@ -14,17 +14,17 @@ Cursor* initCursor(int width, int height, int row, int column, int r, int g, int
 	
 	return cursor;
 }
-void shiftCursorRight(Cursor* cursor){	
+void shiftCursorRight(Cursor* cursor, int value){	
 	if (cursor->column < cursor->maxColumns){
 		cursor->column++;
-		cursor->blinker.rect.x += cursor->columnSize;	
+		cursor->blinker.rect.x += value;	
 	}
 }
 
-void shiftCursorLeft(Cursor* cursor){
+void shiftCursorLeft(Cursor* cursor, int value){
 	if (cursor->column > 1){
 		cursor->column--;
-		cursor->blinker.rect.x -= cursor->columnSize;
+		cursor->blinker.rect.x -= value;
 	}
 }
 

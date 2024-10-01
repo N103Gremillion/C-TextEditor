@@ -28,9 +28,12 @@ Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_F
 	return line;
 }
 
-void addToLine(Line* line, char key){
+int addToLine(Line* line, char key){
+	
+	int shift = 0;
+	
 	if (strlen(line->text) < line->maxChars){
-		addCharacter(line, key);
+		shift = addCharacter(line, key);
 		insert(line->gapBuffer, key);
 		line->text = fetchText(line->gapBuffer);
 	}
@@ -41,9 +44,11 @@ void addToLine(Line* line, char key){
 	}
 	printf("\n");
 	printf("The num of chars in characters is : %d\n", line->numOfChars);
+	
+	return shift;
 }
 
-void addCharacter(Line* line, char key){	
+int addCharacter(Line* line, char key){	
 	// update the size of the array if it is full
 	if (line->numOfChars >= line->charactersLength){
 		increaseCharactersLength(&line->characters, line->charactersLength * 2);
@@ -53,31 +58,31 @@ void addCharacter(Line* line, char key){
 	// get index of where cursor is
 	int index = line->gapBuffer->front;
 	
-	if (index != line->numOfChars){
-		// shift all chars right to make room for the current one
-		for (int i = line->numOfChars; i > index; i--){
-			line->characters[i] = line->characters[i - 1];
-		}
-	}
-	
-	// calculate x position of the new char
+	// get the new character's position
 	int charX;
-	if (index == 0){
+	if (index == 0) {
 		charX = line->x;
-	}
-	else{
+	} else {
 		Character previousCharacter = line->characters[index - 1];
 		charX = previousCharacter.x + previousCharacter.width;
 	}
-	
 	int y = line->y;
 	Character character = initCharacter(line->renderer, line->font, key, charX, y, line->height);
-	
-	// insert at the current gap position
+
+	// Shift characters to the right and update their x positions
+	for (int i = line->numOfChars; i > index; i--) {
+		line->characters[i] = line->characters[i - 1];
+		line->characters[i].x += character.width; 
+		line->characters[i].rect.x += character.width;
+	}
+
 	line->characters[index] = character;
 	
 	line->numOfChars++;
+	
+	return character.width;
 }
+
 // give the text more memory
 void increaseTextMemory(char** textLocation){
 	if (textLocation == NULL){

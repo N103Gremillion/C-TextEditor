@@ -28,8 +28,8 @@ typedef struct {
 } Line;
 
 Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_Font* font);
-void addToLine(Line* line, char key);
-void addCharacter(Line* line, char key);
+int addToLine(Line* line, char key);
+int addCharacter(Line* line, char key);
 // gives more memory to the text 
 void increaseTextMemory(char** textLocation);
 void freeLine(Line* line);

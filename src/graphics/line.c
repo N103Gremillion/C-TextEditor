@@ -37,13 +37,6 @@ int addToLine(Line* line, char key){
 		insert(line->gapBuffer, key);
 		line->text = fetchText(line->gapBuffer);
 	}
-	printf("The text is : %s \n", line->text);
-	printf("The chars are : ");
-	for (int i = 0; i < line->numOfChars; i++){
-		printf("%c", line->characters[i].data);
-	}
-	printf("\n");
-	printf("The num of chars in characters is : %d\n", line->numOfChars);
 	
 	return shift;
 }
@@ -62,7 +55,12 @@ int addCharacter(Line* line, char key){
 	int charX;
 	if (index == 0) {
 		charX = line->x;
-	} else {
+	} 
+	else if (index == line->numOfChars){
+		Character lastCharacter = line->characters[line->numOfChars - 1];
+		charX = lastCharacter.x + lastCharacter.width;
+	}
+	else {
 		Character previousCharacter = line->characters[index - 1];
 		charX = previousCharacter.x + previousCharacter.width;
 	}
@@ -81,6 +79,31 @@ int addCharacter(Line* line, char key){
 	line->numOfChars++;
 	
 	return character.width;
+}
+
+// get the width (shift amount)
+int getLeftShiftValue(Line* line){
+	
+	int index = line->gapBuffer->front;
+	int shiftValue = 0;
+	
+	if (line->numOfChars != 0 && index > 0){
+		shiftValue = line->characters[index - 1].rect.w;
+	}
+	return shiftValue;
+	
+}
+
+int getRightShiftValue(Line* line){
+	
+	int index = line->gapBuffer->front;
+	int shiftValue = 0;
+	
+	if (line->numOfChars != 0 && index < line->numOfChars){
+		shiftValue = line->characters[index].rect.w;
+	}
+	return shiftValue;
+	
 }
 
 // give the text more memory

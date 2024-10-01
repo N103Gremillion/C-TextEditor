@@ -35,6 +35,9 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, Line* line){
 
 // keyboard events for each of the states
 void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line){
+	
+	int shiftValue;
+	
 	switch (key){
 		// escape button
 		case SDLK_ESCAPE:
@@ -43,14 +46,21 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		// right arrow
 		case SDLK_RIGHT:
 			// shift the current cursor over to the right
+			if (line->gapBuffer->front >= line->gapBuffer->chars){
+				break;
+			}
+			shiftValue = getRightShiftValue(line);
+			shiftCursorRight(cursor, shiftValue);
 			right(line->gapBuffer);
-			// shiftCursorRight(cursor);
+			printf("The current index in the buffer is %d. \n", line->gapBuffer->front);
 			break;
 		// left arrow
 		case SDLK_LEFT:
 			// shift the current cursor over to the left
+			shiftValue = getLeftShiftValue(line);
+			shiftCursorLeft(cursor, shiftValue);
 			left(line->gapBuffer);
-			// shiftCursorLeft(cursor);
+			printf("The current position is %d. \n", line->gapBuffer->front);
 			break;
 		// up arrow
 		case SDLK_UP:
@@ -66,25 +76,22 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_RETURN:
 			// shiftCursorDown(cursor);
 			break;
-		case SDLK_SPACE:
-			// shiftCursorRight(cursor);
-			break;
-			
 		// all alphabetical letters
 		case SDLK_a: case SDLK_b: case SDLK_c: case SDLK_d: case SDLK_e:
 		case SDLK_f: case SDLK_g: case SDLK_h: case SDLK_i: case SDLK_j:
 		case SDLK_k: case SDLK_l: case SDLK_m: case SDLK_n: case SDLK_o:
 		case SDLK_p: case SDLK_q: case SDLK_r: case SDLK_s: case SDLK_t:
 		case SDLK_u: case SDLK_v: case SDLK_w: case SDLK_x: case SDLK_y: 
-		case SDLK_z: {
+		case SDLK_z: case SDLK_SPACE:{
 			
 			if (cursor->column >= cursor->maxColumns) {
-				shiftCursorDown(cursor);
+				// int shiftValue = addToLine(line, key);
 			} else if (cursor->row == 1) {
 				// insert the appropriate char
 				int shiftValue = addToLine(line, key);
 				shiftCursorRight(cursor, shiftValue);
 			}
+			printf("The current position is %d. \n", line->gapBuffer->front);
 			break;
 			
 		}

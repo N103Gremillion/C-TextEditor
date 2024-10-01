@@ -4,7 +4,8 @@
 typedef struct{
 	char* buffer;
 	int front; /* size of all components before the cursor */
-	int gap; /* size of gap */ 
+	int gap; /* size of gap */
+	int chars; 
 	int length;
 } GapBuffer;
 

@@ -2,7 +2,7 @@
 
 Cursor* initCursor(int width, int height, int row, int column, int r, int g, int b, char* label){
 	Cursor* cursor = malloc(sizeof(Cursor));
-    Rect blinker = *(createRect(40 + column * 10, 55 + row * 5, width, height, r, g, b, label));
+    Rect blinker = *(createRect(40 + (column - 1) * 10, 55 + row * 5, width, height, r, g, b, label));
        
 	cursor->row = row;
 	cursor->column = column;
@@ -15,6 +15,7 @@ Cursor* initCursor(int width, int height, int row, int column, int r, int g, int
 	return cursor;
 }
 void shiftCursorRight(Cursor* cursor, int value){	
+	printf("the current colum is %d \n", cursor->column);
 	if (cursor->column < cursor->maxColumns){
 		cursor->column++;
 		cursor->blinker.rect.x += value;	
@@ -22,6 +23,7 @@ void shiftCursorRight(Cursor* cursor, int value){
 }
 
 void shiftCursorLeft(Cursor* cursor, int value){
+	printf("the current colum is %d \n", cursor->column);
 	if (cursor->column > 1){
 		cursor->column--;
 		cursor->blinker.rect.x -= value;

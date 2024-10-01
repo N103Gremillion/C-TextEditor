@@ -11,6 +11,7 @@ GapBuffer* initBuffer(){
     gapBuffer->front = 0; 
     gapBuffer->gap = 12;   // Set initial gap size
     gapBuffer->length = 50;  
+    gapBuffer->chars = 0;
     
     return gapBuffer;
 }
@@ -27,6 +28,7 @@ void insert(GapBuffer* buffer, char data){
 	buffer->buffer[buffer->front] = data;	
 	buffer->front++;
 	buffer->gap--;
+	buffer->chars++;
 }
 
 void deleteChar(GapBuffer* buffer){
@@ -36,10 +38,9 @@ void deleteChar(GapBuffer* buffer){
 		return;
 	}
 	
-	// grow the size of the gap and remove the char at the previous position
-	// buffer->buffer[index - 1] = '\0';
 	buffer->gap++;
 	buffer->front--;
+	buffer->chars--;
 }
 
 void left(GapBuffer* buffer){
@@ -53,7 +54,7 @@ void left(GapBuffer* buffer){
 	buffer->buffer[buffer->front + buffer->gap] = leftChar;
 }
 void right(GapBuffer* buffer){
-	if (buffer == NULL || buffer->front + buffer->gap >= buffer->length || buffer->length == 0){
+	if (buffer == NULL || buffer->front + buffer->gap >= buffer->length || buffer->front == buffer->chars || buffer->length == 0){
 		return;
 	}
 	

@@ -47,22 +47,19 @@ void left(GapBuffer* buffer){
 	if (buffer == NULL || buffer->front == 0 || buffer->length == 0){
 		return;
 	}
-	// copy the chars of the left side of gap over to the right
-	char leftChar = buffer->buffer[buffer->front - 1];
 	
+	buffer->buffer[buffer->front + buffer->gap - 1] = buffer->buffer[buffer->front - 1];  // Shift left character to gap
 	buffer->front--;
-	buffer->buffer[buffer->front + buffer->gap] = leftChar;
+	buffer->gap++;
 }
 void right(GapBuffer* buffer){
 	if (buffer == NULL || buffer->front + buffer->gap >= buffer->length || buffer->front == buffer->chars || buffer->length == 0){
 		return;
 	}
 	
-	// copy the chars of the left side of buffer over to the right
-	char rightChar = buffer->buffer[buffer->front + buffer->gap];	
-	
-	buffer->buffer[buffer->front] = rightChar;
+	buffer->buffer[buffer->front] = buffer->buffer[buffer->front + buffer->gap];  // Shift character to front
 	buffer->front++;
+	buffer->gap--;
 }
 void grow(GapBuffer* buffer){
 	
@@ -73,6 +70,8 @@ void grow(GapBuffer* buffer){
 		
 	// shift over the elements to the right and add gap
 	memmove(newBuffer + gapPosition + gapSize, newBuffer + gapPosition, (buffer->length - gapPosition) * sizeof(char));
+	memset(newBuffer + buffer->length, 0, (newSize - buffer->length) * sizeof(char));
+
 	
 	for (int i = gapPosition; i < gapPosition + gapSize; i++) {
         newBuffer[i] = '\0';
@@ -100,6 +99,7 @@ char* fetchText(GapBuffer* buffer){
 	}
 	
 	text[textIndex] = '\0';
+	freeText(buffer->text);
 	
 	return text;
 }

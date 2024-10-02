@@ -52,7 +52,6 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 			shiftValue = getRightShiftValue(line);
 			shiftCursorRight(cursor, shiftValue);
 			right(line->gapBuffer);
-			printf("The current index in the buffer is %d. \n", line->gapBuffer->front);
 			break;
 		// left arrow
 		case SDLK_LEFT:

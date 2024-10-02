@@ -9,7 +9,6 @@ Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_F
 	
 	// deminsions of chars in text
 	line->height = 20;
-	line->maxChars = 90;
 	line->numOfChars = 0;
 	line->x = x;
 	line->y = y;
@@ -30,13 +29,9 @@ Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_F
 
 int addToLine(Line* line, char key){
 	
-	int shift = 0;
-	
-	if (strlen(line->text) < line->maxChars){
-		shift = addCharacter(line, key);
-		insert(line->gapBuffer, key);
-		line->text = fetchText(line->gapBuffer);
-	}
+	int shift = addCharacter(line, key); 
+	insert(line->gapBuffer, key);
+	line->text = fetchText(line->gapBuffer);
 	
 	return shift;
 }
@@ -53,17 +48,16 @@ int addCharacter(Line* line, char key){
 	
 	// get the new character's position
 	int charX;
-	if (index == 0) {
+	if (index == 0) 
+	{
 		charX = line->x;
 	} 
-	else if (index == line->numOfChars){
-		Character lastCharacter = line->characters[line->numOfChars - 1];
-		charX = lastCharacter.x + lastCharacter.width;
-	}
-	else {
+	else 
+	{
 		Character previousCharacter = line->characters[index - 1];
 		charX = previousCharacter.x + previousCharacter.width;
 	}
+	
 	int y = line->y;
 	Character character = initCharacter(line->renderer, line->font, key, charX, y, line->height);
 
@@ -102,6 +96,7 @@ int getRightShiftValue(Line* line){
 	if (line->numOfChars != 0 && index < line->numOfChars){
 		shiftValue = line->characters[index].rect.w;
 	}
+	
 	return shiftValue;
 	
 }

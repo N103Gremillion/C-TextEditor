@@ -39,42 +39,73 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 	int shiftValue;
 	
 	switch (key){
+		
 		// escape button
 		case SDLK_ESCAPE:
 			*running = 0;
 			break;
+			
 		// right arrow
 		case SDLK_RIGHT:
-			// shift the current cursor over to the right
 			if (line->gapBuffer->front >= line->gapBuffer->chars){
 				break;
 			}
 			shiftValue = getRightShiftValue(line);
 			shiftCursorRight(cursor, shiftValue);
 			right(line->gapBuffer);
+			
+			// Update cursor width to the width of the next character and color
+			if (line->gapBuffer->front < line->numOfChars) {
+				cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
+				line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
+				line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
+				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
+				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
+			}
+			else {
+				line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
+				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
+			}
+			
 			break;
+			
 		// left arrow
 		case SDLK_LEFT:
-			// shift the current cursor over to the left
 			shiftValue = getLeftShiftValue(line);
 			shiftCursorLeft(cursor, shiftValue);
 			left(line->gapBuffer);
-			printf("The current position is %d. \n", line->gapBuffer->front);
+			
+			// Update cursor width to the width of the previous character and color
+			if (line->gapBuffer->front >= 0)
+			{
+				cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
+				line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
+				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
+				
+				if (line->gapBuffer->front + 1 < line->numOfChars){
+					line->characters[line->gapBuffer->front + 1].color = (SDL_Color) {0, 0, 0, 255};
+					setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front + 1]));
+				}
+			}
 			break;
+			
 		// up arrow
 		case SDLK_UP:
 			// shift up
 			shiftCursorUp(cursor);
 			break;
+			
 		// down arrow
 		case SDLK_DOWN:
 			// shift down
 			shiftCursorDown(cursor);
 			break;
+			
 		// enter
 		case SDLK_RETURN:
 			// shiftCursorDown(cursor);
 			break;
+			
 		// all alphabetical letters
 		case SDLK_a: case SDLK_b: case SDLK_c: case SDLK_d: case SDLK_e:
 		case SDLK_f: case SDLK_g: case SDLK_h: case SDLK_i: case SDLK_j:
@@ -83,9 +114,7 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_u: case SDLK_v: case SDLK_w: case SDLK_x: case SDLK_y: 
 		case SDLK_z: case SDLK_SPACE:{
 			
-			if (cursor->column >= cursor->maxColumns) {
-				// int shiftValue = addToLine(line, key);
-			} else if (cursor->row == 1) {
+			if (cursor->row == 1) {
 				// insert the appropriate char
 				int shiftValue = addToLine(line, key);
 				shiftCursorRight(cursor, shiftValue);

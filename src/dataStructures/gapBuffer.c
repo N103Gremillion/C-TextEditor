@@ -99,7 +99,6 @@ char* fetchText(GapBuffer* buffer){
 	}
 	
 	text[textIndex] = '\0';
-	freeText(buffer->text);
 	
 	return text;
 }

@@ -8,7 +8,6 @@ Cursor* initCursor(int width, int height, int row, int column, int r, int g, int
 	cursor->column = column;
 	cursor->rowSize = 20;
 	cursor->columnSize = 10;
-	cursor->maxColumns = 90;
 	cursor->state = EDIT_MODE;
 	cursor->blinker = blinker;
 	
@@ -24,14 +23,14 @@ void shiftCursorRight(Cursor* cursor, int value){
 
 void shiftCursorLeft(Cursor* cursor, int value){
 	printf("the current colum is %d \n", cursor->column);
-	if (cursor->column > 0){
+	if (cursor->column > 1){
 		cursor->column--;
 		cursor->blinker.rect.x -= value;
 	}
 }
 
 void shiftCursorUp(Cursor* cursor){
-	if (cursor->row > 0){
+	if (cursor->row > 1){
 		cursor->row--;
 		cursor->blinker.rect.y -= cursor->rowSize;
 	}

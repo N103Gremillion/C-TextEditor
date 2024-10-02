@@ -14,7 +14,6 @@
 typedef struct {
 	
 	int height;
-	int maxChars;
 	int numOfChars;
 	int y;
 	int x;

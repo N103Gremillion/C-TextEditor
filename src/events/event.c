@@ -36,8 +36,6 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, Line* line){
 // keyboard events for each of the states
 void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line){
 	
-	int shiftValue;
-	
 	switch (key){
 		
 		// escape button
@@ -47,46 +45,12 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 			
 		// right arrow
 		case SDLK_RIGHT:
-			if (line->gapBuffer->front >= line->gapBuffer->chars){
-				break;
-			}
-			shiftValue = getRightShiftValue(line);
-			shiftCursorRight(cursor, shiftValue);
-			right(line->gapBuffer);
-			
-			// Update cursor width to the width of the next character and color
-			if (line->gapBuffer->front < line->numOfChars) {
-				cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
-				line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
-				line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
-				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
-				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
-			}
-			else {
-				line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
-				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
-			}
-			
+			handleRightKeyPress(line, cursor);
 			break;
 			
 		// left arrow
 		case SDLK_LEFT:
-			shiftValue = getLeftShiftValue(line);
-			shiftCursorLeft(cursor, shiftValue);
-			left(line->gapBuffer);
-			
-			// Update cursor width to the width of the previous character and color
-			if (line->gapBuffer->front >= 0)
-			{
-				cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
-				line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
-				setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
-				
-				if (line->gapBuffer->front + 1 < line->numOfChars){
-					line->characters[line->gapBuffer->front + 1].color = (SDL_Color) {0, 0, 0, 255};
-					setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front + 1]));
-				}
-			}
+			handleLeftKeyPress(line, cursor);
 			break;
 			
 		// up arrow
@@ -114,12 +78,7 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_u: case SDLK_v: case SDLK_w: case SDLK_x: case SDLK_y: 
 		case SDLK_z: case SDLK_SPACE:{
 			
-			if (cursor->row == 1) {
-				// insert the appropriate char
-				int shiftValue = addToLine(line, key);
-				shiftCursorRight(cursor, shiftValue);
-			}
-			printf("The current position is %d. \n", line->gapBuffer->front);
+			handleRenderableKeyPress(line, key, cursor);
 			break;
 			
 		}
@@ -135,5 +94,61 @@ void pullInsertKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 }
 
 void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
+	
+}
+
+void handleRenderableKeyPress(Line* line, SDL_Keycode key, Cursor* cursor){
+	
+	if (cursor->row == 1) {
+		// insert the appropriate char
+		int shiftValue = addToLine(line, key);
+		shiftCursorRight(cursor, shiftValue);
+	}
+	
+}
+
+void handleLeftKeyPress(Line* line, Cursor* cursor){
+	
+	int shiftValue = getLeftShiftValue(line);
+	shiftCursorLeft(cursor, shiftValue);
+	left(line->gapBuffer);
+	
+	// Update cursor width to the width of the previous character and color
+	if (line->gapBuffer->front >= 0)
+	{
+		cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
+		line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
+		setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
+		
+		if (line->gapBuffer->front + 1 < line->numOfChars){
+			line->characters[line->gapBuffer->front + 1].color = (SDL_Color) {0, 0, 0, 255};
+			setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front + 1]));
+		}
+	}
+	
+}
+
+void handleRightKeyPress(Line* line, Cursor* cursor){
+	
+	if (line->gapBuffer->front >= line->gapBuffer->chars){
+				return;
+	}
+	
+	int shiftValue = getRightShiftValue(line);
+	shiftCursorRight(cursor, shiftValue);
+	right(line->gapBuffer);
+	
+	// Update cursor width to the width of the next character and color
+	if (line->gapBuffer->front < line->numOfChars) {
+		cursor->blinker.rect.w = line->characters[line->gapBuffer->front].width;
+		line->characters[line->gapBuffer->front].color = (SDL_Color) {173, 216, 230, 255};
+		line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
+		setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front]));
+		setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
+	}
+	else {
+		line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
+		setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
+	}
 	
 }

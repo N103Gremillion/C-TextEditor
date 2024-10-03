@@ -75,6 +75,29 @@ int addCharacter(Line* line, char key){
 	return character.width;
 }
 
+void removeCharacterFromLine(Line* line){
+	int index = line->gapBuffer->front;
+	
+	
+	if (index == 0){
+		return;
+	}
+	
+	Character character = line->characters[index - 1];
+	
+	if (character.texture != NULL) {
+        SDL_DestroyTexture(character.texture);
+    }
+    
+	for (int i = index - 1; i < line->numOfChars - 1; i++) {
+        line->characters[i] = line->characters[i + 1];
+        line->characters[i].x -= character.width; 
+		line->characters[i].rect.x -= character.width;
+    }
+  
+    line->numOfChars--;
+}
+
 // get the width (shift amount)
 int getLeftShiftValue(Line* line){
 	

@@ -70,6 +70,10 @@ void pullEditKeyboard(int* running, SDL_Keycode key, SDL_Keymod mode, Cursor* cu
 		case SDLK_RETURN:
 			// shiftCursorDown(cursor);
 			break;
+		
+		case SDLK_BACKSPACE:
+			handleBackSpace(line, cursor);
+			break;
 			
 		// renderable characters
 		case SDLK_a: case SDLK_b: case SDLK_c: case SDLK_d: case SDLK_e:
@@ -158,5 +162,15 @@ void handleRightKeyPress(Line* line, Cursor* cursor){
 		line->characters[line->gapBuffer->front - 1].color = (SDL_Color) {0, 0, 0, 255};
 		setCharTexture(line->renderer, &(line->characters[line->gapBuffer->front - 1]));
 	}
+	
+}
+
+void handleBackSpace(Line* line, Cursor* cursor){
+	
+	int shiftValue = getLeftShiftValue(line);
+	
+	removeCharacterFromLine(line);
+	shiftCursorLeft(cursor, shiftValue);
+	deleteChar(line->gapBuffer);
 	
 }

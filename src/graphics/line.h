@@ -29,6 +29,7 @@ typedef struct {
 Line* initLine(SDL_Renderer* renderer, int x, int y, GapBuffer* gapBuffer, TTF_Font* font);
 int addToLine(Line* line, char key);
 int addCharacter(Line* line, char key);
+void removeCharacterFromLine(Line* line);
 int getLeftShiftValue(Line* line);
 int getRightShiftValue(Line* line);
 // gives more memory to the text 

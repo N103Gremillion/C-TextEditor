@@ -14,4 +14,5 @@ void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor);
 void handleRenderableKeyPress(Line* line, SDL_Keycode key, SDL_Keymod mod, Cursor* cursor);
 void handleLeftKeyPress(Line* line, Cursor* cursor);
 void handleRightKeyPress(Line* line, Cursor* cursor);
+void handleBackSpace(Line* line, Cursor* cursor);
 #endif

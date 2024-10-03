@@ -10,11 +10,12 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, Line* line){
 		}
 		else if (event->type == SDL_KEYDOWN){
 			SDL_Keycode key = event->key.keysym.sym;
+			SDL_Keymod mode = SDL_GetModState();
 			// poll the keys for each of the states
 			switch(cursor->state){
 				// edit mode calls the coresponding key event
 				case EDIT_MODE:
-					pullEditKeyboard(running, key, cursor, line);
+					pullEditKeyboard(running, key, mode, cursor, line);
 					break;
 				// command mode calls the coresponding key event
 				case COMMAND_MODE:
@@ -34,7 +35,7 @@ void handleEvents(int* running, SDL_Event* event, Cursor* cursor, Line* line){
 }
 
 // keyboard events for each of the states
-void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line){
+void pullEditKeyboard(int* running, SDL_Keycode key, SDL_Keymod mode, Cursor* cursor, Line* line){
 	
 	switch (key){
 		
@@ -78,7 +79,7 @@ void pullEditKeyboard(int* running, SDL_Keycode key, Cursor* cursor, Line* line)
 		case SDLK_u: case SDLK_v: case SDLK_w: case SDLK_x: case SDLK_y: 
 		case SDLK_z: case SDLK_SPACE:{
 			
-			handleRenderableKeyPress(line, key, cursor);
+			handleRenderableKeyPress(line, key, mode, cursor);
 			break;
 			
 		}
@@ -97,7 +98,14 @@ void pullSaveKeyboard(int* running, SDL_Keycode key, Cursor* cursor){
 	
 }
 
-void handleRenderableKeyPress(Line* line, SDL_Keycode key, Cursor* cursor){
+void handleRenderableKeyPress(Line* line, SDL_Keycode key, SDL_Keymod mode, Cursor* cursor){
+	
+	// check if the shift is pressed then change the key to uppercase
+	if (key >= SDLK_a && key <= SDLK_z){
+		if (mode & KMOD_SHIFT || mode & KMOD_CAPS){
+			key = key - 32;
+		}
+	}
 	
 	if (cursor->row == 1) {
 		// insert the appropriate char

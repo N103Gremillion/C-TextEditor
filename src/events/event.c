@@ -127,8 +127,8 @@ void pullEditKeyboard(int *running, SDL_Keycode key, SDL_Keymod mode, Cursor *cu
 	case SDLK_MINUS:
 	case SDLK_EQUALS:
 	case SDLK_SPACE:
-	case SDLK_LEFTBRACKET:
 	case SDLK_RIGHTBRACKET:
+	case SDLK_LEFTBRACKET:
 	{
 
 		handleRenderableKeyPress(line, key, mode, cursor);
